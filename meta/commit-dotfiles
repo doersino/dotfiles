@@ -28,11 +28,10 @@ cp "$SM_PREFIX/Preferences.sublime-settings" "$DOTFILES_REPO/sublime-merge/"
 cd "$DOTFILES_REPO"
 
 CHANGED=$(git ls-files -m | awk -vORS=', ' '{ print $0 }' | sed 's/, $//')
-echo "Upgrade $CHANGED" > "/tmp/commit-dotfiles-message.txt"
+echo "Update $CHANGED" > "/tmp/commit-dotfiles-message.txt"
 git add .
 git commit -F "/tmp/commit-dotfiles-message.txt" -e
 git push
 rm "/tmp/commit-dotfiles-message.txt"
-test
 
 cd "$WORKING_DIR"

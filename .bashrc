@@ -273,7 +273,8 @@ alias backup-do='/Users/noah/Dropbox/code/backup/backup-do.sh'
 alias backup-sync='/Users/noah/Dropbox/code/backup/backup-sync.sh'
 
 # dotfiles
-alias commitbashrc='echo "Update .bashrc" > /tmp/commitbashrc.txt; cp ~/.bashrc ~/Dropbox/code/scripts/; cd ~/Dropbox/code/scripts/; git add .bashrc; git commit -F /tmp/commitbashrc.txt -e; git push; rm /tmp/commitbashrc.txt; cd -'
+alias commit-dotfiles='~/Dropbox/code/dotfiles/meta/commit-dotfiles'
+alias commit-bashrc='~/Dropbox/code/dotfiles/meta/commit-bashrc'
 
 # downloads
 alias simonstalenhag='cd ~/Desktop; mkdir simonstalenhag; cd simonstalenhag; curl http://www.simonstalenhag.se | grep bilderbig | cut -d"\"" -f2 | sed "s,//,/,g" | uniq | sed -e "s/^/http:\/\/www.simonstalenhag.se\//" | xargs wget'

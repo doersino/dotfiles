@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo "Update .bashrc" > /tmp/commit-bashrc.txt
+cp ~/.bashrc ~/Dropbox/code/dotfiles/
+cd ~/Dropbox/code/dotfiles/
+git add .bashrc
+git commit -F /tmp/commit-bashrc.txt -e
+git push
+rm /tmp/commit-bashrc.txt
+cd -
