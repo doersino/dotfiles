@@ -1,0 +1,37 @@
+#!/bin/bash
+
+DOTFILES_REPO="$HOME/Dropbox/code/dotfiles"
+WORKING_DIR="$PWD"
+
+# actual .dotfiles
+cp "$HOME/.bashrc" "$DOTFILES_REPO/"
+cp "$HOME/.bash_profile" "$DOTFILES_REPO/"
+cp "$HOME/.psqlrc" "$DOTFILES_REPO/"
+cp "$HOME/.gitconfig" "$DOTFILES_REPO/"
+cp "$HOME/.gitignore_global" "$DOTFILES_REPO/"
+
+# sublime text config, package control state and package configs
+ST3_PREFIX="$HOME/Library/Application Support/Sublime Text 3/Packages/User"
+mkdir -p "$DOTFILES_REPO/sublime-text/"
+cp "$ST3_PREFIX/Preferences.sublime-settings" "$DOTFILES_REPO/sublime-text/"
+cp "$ST3_PREFIX/Package Control.sublime-settings" "$DOTFILES_REPO/sublime-text/"
+cp "$ST3_PREFIX/Color Highlight.sublime-settings" "$DOTFILES_REPO/sublime-text/"
+cp "$ST3_PREFIX/CursorRuler.sublime-settings" "$DOTFILES_REPO/sublime-text/"
+cp "$ST3_PREFIX/GitGutter.sublime-settings" "$DOTFILES_REPO/sublime-text/"
+# cp "$ST3_PREFIX/MarkdownPreview.sublime-settings" "$DOTFILES_REPO/sublime-text/"  # purposefully excluded, this one contains a GitHub access token
+
+# sublime merge config
+SM_PREFIX="$HOME/Library/Application Support/Sublime Merge/Packages/User"
+mkdir -p "$DOTFILES_REPO/sublime-merge/"
+cp "$SM_PREFIX/Preferences.sublime-settings" "$DOTFILES_REPO/sublime-merge/"
+
+cd "$DOTFILES_REPO"
+
+CHANGED=$(git ls-files -m | awk -vORS=', ' '{ print $0 }' | sed 's/, $/\n/')
+echo "Upgrade $CHANGED" > "/tmp/commit-dotfiles-message.txt"
+git add .
+git commit -F "/tmp/commit-dotfiles-message.txt" -e
+git push
+rm "/tmp/commit-dotfiles-message.txt"
+
+cd "$WORKING_DIR"

@@ -1,0 +1,14 @@
+[user]
+	name = Noah Doersing
+	email = doersino@gmail.com
+[color]
+	branch = auto
+	diff = auto
+	status = auto
+	interactive = auto
+[help]
+	autocorrect = 1
+[core]
+	excludesfile = /Users/noah/.gitignore_global
+[credential]
+	helper = osxkeychain
