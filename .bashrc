@@ -224,7 +224,7 @@ alias refresh-bashrc='source ~/.bashrc'
 
 # git
 alias g='git'
-alias gs='g status'  # collision with ghostscript executable
+alias gs='g status'  # due to collision with ghostscript executable
 alias gd='g diff'
 alias gds='g diff --staged'
 alias ga='g add'
