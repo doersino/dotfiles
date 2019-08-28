@@ -1,4 +1,5 @@
 {
+	"expand_merge_commits_by_default": true,
 	"font_face": "Iosevka",
 	"theme": "Merge.sublime-theme"
 }
