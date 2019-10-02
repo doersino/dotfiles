@@ -304,15 +304,20 @@ function settitle() {
     echo -ne "\033]0;${@:1}\007"
 }
 
-# change the volume on a mac, from 0 to 7
-# https://github.com/doersino/scripts/blob/master/setvolume.sh
-function setvolume() {
+# get or set the volume on a mac, in percent
+function vol() {
     local USAGE
-    USAGE="usage: setvolume NUMBER_FROM_0_AND_7"
-    if [ -z "$1" ]; then
-        echo -e "$USAGE"; return 1
+    USAGE="usage: vol [-h | NUMBER_FROM_0_TO_100]"
+    if [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
+        echo -e "$USAGE"
+        return 1
     fi
-    osascript -e "set volume $1"
+
+    if [ -z "$1" ]; then
+        osascript -e "output volume of (get volume settings)"
+        return
+    fi
+    osascript -e "set volume output volume $1"
 }
 
 # save keystrokes for some common actions when controlling itunes remotely with
