@@ -226,14 +226,12 @@ alias refresh-bashrc='source ~/.bashrc'
 alias g='git'
 alias gs='g status'  # due to collision with ghostscript executable
 alias gd='g diff'
-alias gds='g diff --staged'
 alias ga='g add'
 alias gc='g commit -m'
 alias gp='g push'
-alias gpom='gp origin master'
 alias gl='g log'
-alias glg='gl --graph'
 alias gls='g log --pretty=oneline --abbrev-commit -n 15'  # short log
+
 alias grau='g remote add upstream'  # argument: clone url of remote upstream repo
 alias gmakeeven='g fetch upstream && g checkout master && g merge upstream/master && gpom'  # in a fork, assuming no local changes have been made, fetch all new commits from upstream, merge them into the fork, and finally push
 alias gmakeevenforce='g fetch upstream && g checkout master && git reset --hard upstream/master && gpom --force'  # same except will "force pull" from upstream and you'll lose any local changes
@@ -265,12 +263,12 @@ alias hejserve='bundle exec jekyll serve'
 alias hejservei='bundle exec jekyll serve --incremental'
 
 # backup
-alias backup-fonts='/Users/noah/Dropbox/code/backup/backup-fonts.sh'
-alias backup-gists='/Users/noah/Dropbox/code/backup/backup-gists.sh'
-alias backup-tumblr='/Users/noah/Dropbox/code/scripts/backup-tumblr.sh'
-alias backup-uberspace='/Users/noah/Dropbox/code/backup/backup-uberspace.sh'
-alias backup-do='/Users/noah/Dropbox/code/backup/backup-do.sh'
-alias backup-sync='/Users/noah/Dropbox/code/backup/backup-sync.sh'
+alias backup-fonts='~/Dropbox/code/backup/backup-fonts.sh'
+alias backup-gists='~/Dropbox/code/backup/backup-gists.sh'
+alias backup-tumblr='~/Dropbox/code/scripts/backup-tumblr.sh'
+alias backup-uberspace='~/Dropbox/code/backup/backup-uberspace.sh'
+alias backup-do='~/Dropbox/code/backup/backup-do.sh'
+alias backup-sync='~/Dropbox/code/backup/backup-sync.sh'
 
 # dotfiles
 alias commit-dotfiles='~/Dropbox/code/dotfiles/meta/commit-dotfiles'
