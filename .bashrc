@@ -307,7 +307,7 @@ function settitle() {
 # get or set the volume on a mac, in percent
 function vol() {
     local USAGE
-    USAGE="usage: vol [-h | NUMBER_FROM_0_TO_100 | -INCREMENT | +INCREMENT]"
+    USAGE="usage: vol [-h | NUMBER_FROM_0_TO_100 | -DECREMENT | +INCREMENT]"
     if [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
         echo -e "$USAGE"
         return 1
