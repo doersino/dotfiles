@@ -344,7 +344,7 @@ function it() {
 # extract fonts used in a pdf
 # https://stackoverflow.com/a/3489099
 function fonts() {
-    /usr/local/bin/gs -q -dNODISPLAY "/Users/noah/Dropbox/code/scripts/extractFonts.ps" -c "($1) extractFonts quit"
+    /usr/local/bin/gs -q -dNODISPLAY "$HOME/Dropbox/code/scripts/extractFonts.ps" -c "($1) extractFonts quit"
 }
 
 # call a command whenever a file is saved, requires fswatch utility
@@ -358,17 +358,25 @@ function onsave() {
 # create a jpeg version of one or multiple heic files (which can be located in
 # different directories; each conversion result ends up "next to" its respective
 # original) using sips
-function unheic {
+function unheic() {
     local USAGE
-    USAGE="usage: unheic FILES"
+    USAGE="usage: unheic [--replace] FILES"
     if [ -z "$1" ]; then
         echo -e "$USAGE"; return 1
+    fi
+
+    REPLACE=false
+    if [ "$1" == "--replace" ]; then
+        REPLACE=true
+        shift
     fi
 
     for FILE in "$@"; do
         NO_EXT="${FILE%.*}"
         echo "$NO_EXT"
         sips -s format jpeg "$FILE" --out "$NO_EXT".jpg
+        if [ $REPLACE == true ]; then
+            rm "$FILE"
+        fi
     done
-    #
 }
