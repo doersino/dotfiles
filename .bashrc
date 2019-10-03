@@ -307,7 +307,7 @@ function settitle() {
 # get or set the volume on a mac, in percent
 function vol() {
     local USAGE
-    USAGE="usage: vol [-h | NUMBER_FROM_0_TO_100]"
+    USAGE="usage: vol [-h | NUMBER_FROM_0_TO_100 | -INCREMENT | +INCREMENT]"
     if [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
         echo -e "$USAGE"
         return 1
@@ -315,9 +315,13 @@ function vol() {
 
     if [ -z "$1" ]; then
         osascript -e "output volume of (get volume settings)"
-        return
+    elif [[ "$1" == -* ]]; then
+        osascript -e "set volume output volume (output volume of (get volume settings) $1)"
+    elif [[ "$1" == +* ]]; then
+        osascript -e "set volume output volume (output volume of (get volume settings) $1)"
+    else
+        osascript -e "set volume output volume $1"
     fi
-    osascript -e "set volume output volume $1"
 }
 
 # save keystrokes for some common actions when controlling itunes remotely with
