@@ -286,7 +286,7 @@ alias backupbull2='rsync -auv --progress --stats --include '"'"'./'"'"' --includ
 alias repair-readline='cd /usr/local/opt/readline/lib/ && ln libreadline.8.0.dylib libreadline.7.dylib'
 
 # 22:22
-alias 2222='echo "Forever (h)waiting..."; while true; do [[ $(date | cut -d" " -f 4 | cut -d":" -f 1) == $(date | cut -d" " -f 4 | cut -d":" -f 2) ]] && date | cut -d" " -f 4 | cut -d":" -f 1,2 | say; sleep 1; done'
+alias 2222='echo "Forever (h)waiting..."; while true; do [[ $(date | tr -s " " | cut -d" " -f 4 | cut -d":" -f 1) == $(date | tr -s " " | cut -d" " -f 4 | cut -d":" -f 2) ]] && date | tr -s " " | cut -d" " -f 4 | cut -d":" -f 1,2 | cat; sleep 1; done'
 
 ###############
 ## FUNCTIONS ##
