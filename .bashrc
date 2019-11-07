@@ -7,9 +7,9 @@
 # postgres
 export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/10/bin"
 
-alias psn='psql -c "drop database scratch;"; psql -c "create database scratch;"'
-alias psf='psql -d scratch -f'
-alias psr='psql -d scratch'
+alias psn='psql -c "drop database scratch;"; psql -c "create database scratch;"'  # reⓃew database
+alias psf='psql -d scratch -f'                                                    # execute Ⓕile
+alias psr='psql -d scratch'                                                       # open ⓇEPL
 
 
 ##########
