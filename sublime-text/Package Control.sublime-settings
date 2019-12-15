@@ -19,7 +19,8 @@
 		"SublimeLinter-php",
 		"SublimeLinter-pylint",
 		"SublimeLinter-shellcheck",
-		"TrailingSpaces"
+		"TrailingSpaces",
+		"UnicodeMath"
 	],
 	"repositories":
 	[
