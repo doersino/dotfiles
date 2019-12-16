@@ -277,7 +277,7 @@ alias commit-bashrc='~/Dropbox/code/dotfiles/meta/commit-bashrc'
 # downloads
 alias simonstalenhag='cd ~/Desktop; mkdir simonstalenhag; cd simonstalenhag; curl http://www.simonstalenhag.se | grep bilderbig | cut -d"\"" -f2 | sed "s,//,/,g" | uniq | sed -e "s/^/http:\/\/www.simonstalenhag.se\//" | xargs wget'
 alias davebull='cd "/Volumes/Time Capsule" && { youtube-dl --no-check-certificate -o "%(timestamp)s_%(title)s-%(id)s.%(ext)s" --download-archive .downloaded --console-title https://www.twitch.tv/japaneseprintmaking/videos/all; cd - >/dev/null; }'
-alias davebulllocal='mkcd ~/Desktop/davebull-temp && { youtube-dl --no-check-certificate -o "%(timestamp)s_%(title)s-%(id)s.%(ext)s" --download-archive .downloaded --console-title https://www.twitch.tv/japaneseprintmaking/videos/all; cd - >/dev/null; }'
+alias davebulllocal='cd ~/Desktop/davebull-temp && { youtube-dl --no-check-certificate -o "%(timestamp)s_%(title)s-%(id)s.%(ext)s" --download-archive .downloaded --console-title https://www.twitch.tv/japaneseprintmaking/videos/all; cd - >/dev/null; }'
 alias datesbull='cd "/Volumes/Time Capsule" && { ls -1 *.mp4 | cut -d _ -f 1 | gawk '"'"'{ print strftime("%c", $0); }'"'"'; cd -; }'
 alias backupbull='rsync -auv --progress --stats --include '"'"'./'"'"' --include '"'"'*.mp4'"'"' --exclude '"'"'*'"'"' "/Volumes/Time Capsule/" "/Volumes/one/davebull/"'
 alias backupbull2='rsync -auv --progress --stats --include '"'"'./'"'"' --include '"'"'*.mp4'"'"' --exclude '"'"'*'"'"' "/Volumes/Time Capsule/" "/Volumes/two/davebull/"'
