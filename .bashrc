@@ -282,7 +282,7 @@ alias datesbull='cd "/Volumes/Time Capsule" && { ls -1 *.mp4 | cut -d _ -f 1 | g
 alias backupbull='rsync -auv --progress --stats --include '"'"'./'"'"' --include '"'"'*.mp4'"'"' --exclude '"'"'*'"'"' "/Volumes/Time Capsule/" "/Volumes/one/davebull/"'
 alias backupbull2='rsync -auv --progress --stats --include '"'"'./'"'"' --include '"'"'*.mp4'"'"' --exclude '"'"'*'"'"' "/Volumes/Time Capsule/" "/Volumes/two/davebull/"'
 
-# awk depends on an old version of readline? idk, need to run this sometimes after brew upgrade
+# awk depends on an old version of readline? idk, need to run this sometimes after brew upgrade???
 alias repair-readline='cd /usr/local/opt/readline/lib/ && ln libreadline.8.0.dylib libreadline.7.dylib'
 
 # 22:22
