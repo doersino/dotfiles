@@ -363,7 +363,7 @@ function onsave() {
 
 # create a jpeg version of one or multiple heic files (which can be located in
 # different directories; each conversion result ends up "next to" its respective
-# original or replaces is if the --replace flag is set) using sips
+# original or replaces it if the --replace flag is set) using sips
 function unheic() {
     local USAGE
     USAGE="usage: unheic [--replace] FILES"
