@@ -386,3 +386,12 @@ function unheic() {
         fi
     done
 }
+
+# serve the cwd on a given port
+function pyserve() {
+    PORT=8000
+    if [ ! -z "$1" ]; then
+        PORT="$1"
+    fi
+    python -m SimpleHTTPServer "$PORT"
+}
