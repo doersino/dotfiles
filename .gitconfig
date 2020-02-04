@@ -12,3 +12,5 @@
 	excludesfile = /Users/noah/.gitignore_global
 [credential]
 	helper = osxkeychain
+[diff]
+	noprefix = true
