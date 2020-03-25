@@ -84,12 +84,15 @@ fi
 # set up the command prompt
 function __prompt_command() {
 
-    # green or red depending on the previous command's exit code
+    # initialize
+    PS1=""
+
+    # color green or red depending on the previous command's exit code
     local EXIT=$?
     if [ $EXIT -eq 0 ]; then
-        PS1="\[\033[1;32m\]"
+        PS1+="\[\033[1;32m\]"
     else
-        PS1="\[\033[1;31m\]"
+        PS1+="\[\033[1;31m\]"
     fi
 
     # git prompt, which we'll store in a variable for now
@@ -160,7 +163,13 @@ function __prompt_command() {
     PS1+=" \[\033[1;37m\]$(date +%d.%H:%M)\[\033[0;1m\]"
     PS1+="\n"
 
-    # second line: $
+    # second line: show user@host in reversed color scheme if not my user on my laptop
+    USERHOST="$(whoami)@$(hostname)"
+    if [ ! "$USERHOST" = "noah@apfel" ]; then
+        PS1+="\[\033[1;7m\]$USERHOST\[\033[0;1m\] "
+    fi
+
+    # $
     PS1+="\$\[\033[0m\] "
 
     # set terminal title to basename of cwd
@@ -224,7 +233,7 @@ alias refresh-bashrc='source ~/.bashrc'
 
 # git
 alias g='git'
-alias gs='g status'  # due to collision with ghostscript executable
+alias gs='g status'  # collision with ghostscript executable
 alias gd='g diff'
 alias ga='g add'
 alias gc='g commit -m'
@@ -255,12 +264,15 @@ alias exmcs='ssh -t ex.local "screen -r mcs"'  # minecraft server, detach with c
 alias exdls='scp -rp ex.local:/home/noah/Downloads/ ~/Desktop/exdls/'
 alias exdls2='scp -rp ex.local:/home/noah/Downloads/ /Volumes/Time\ Capsule/exdls/'
 
-# pi
+# raspberry pi
 alias pissh='ssh pi@raspberrypi.local'
 
-# website
-alias hejssh='ssh -4 doersino@draco.uberspace.de'
-alias hejquota='hejssh quota -gsl'
+# internet websites
+alias noahdoerssh='ssh noahdoer@wirtanen.uberspace.de'
+alias leakyssh='ssh leakyabs@wild.uberspace.de'
+alias leakyquota='leakyssh quota -gsl'
+#alias hejssh='ssh -4 doersino@draco.uberspace.de'
+#alias hejquota='hejssh quota -gsl'
 alias hejinstall='bundle install --path ./vendor/bundle'  # the --deployment flag also uses ./vendor/bundle, but requires a Gemfile.lock, which in the case of a Jekyll upgrade may not be current
 alias hejserve='bundle exec jekyll serve'
 alias hejservei='bundle exec jekyll serve --incremental'
