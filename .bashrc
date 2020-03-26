@@ -282,6 +282,7 @@ alias backup-fonts='~/Dropbox/code/backup/backup-fonts.sh'
 alias backup-gists='~/Dropbox/code/backup/backup-gists.sh'
 alias backup-tumblr='~/Dropbox/code/scripts/backup-tumblr.sh'
 alias backup-uberspace='~/Dropbox/code/backup/backup-uberspace.sh'
+alias backup-uberspaces='~/Dropbox/code/backup/backup-uberspaces.sh'
 alias backup-do='~/Dropbox/code/backup/backup-do.sh'
 alias backup-sync='~/Dropbox/code/backup/backup-sync.sh'
 
