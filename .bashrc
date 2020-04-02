@@ -85,10 +85,10 @@ fi
 function __prompt_command() {
 
     # initialize
+    local EXIT=$?
     PS1=""
 
     # color green or red depending on the previous command's exit code
-    local EXIT=$?
     if [ $EXIT -eq 0 ]; then
         PS1+="\[\033[1;32m\]"
     else
@@ -165,7 +165,7 @@ function __prompt_command() {
 
     # second line: show user@host in reversed color scheme if not my user on my laptop
     USERHOST="$(whoami)@$(hostname)"
-    if [ ! "$USERHOST" = "noah@apfel" ]; then
+    if [ ! "$USERHOST" = "noah@apfel" ] && [ ! "$USERHOST" = "noah@apfel.local" ]; then
         PS1+="\[\033[1;7m\]$USERHOST\[\033[0;1m\] "
     fi
 
