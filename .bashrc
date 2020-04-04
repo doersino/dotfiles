@@ -169,6 +169,11 @@ function __prompt_command() {
         PS1+="\[\033[1;7m\]$USERHOST\[\033[0;1m\] "
     fi
 
+    # show python virtual environment if activated
+    VENV=""
+    [[ -n "$VIRTUAL_ENV" ]] && VENV="${VIRTUAL_ENV##*/}"
+    [[ -n "$VENV" ]] && PS1+="($venv) "
+
     # $
     PS1+="\$\[\033[0m\] "
 
