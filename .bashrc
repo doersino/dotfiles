@@ -278,9 +278,15 @@ alias leakyssh='ssh leakyabs@wild.uberspace.de'
 alias leakyquota='leakyssh quota -gsl'
 #alias hejssh='ssh -4 doersino@draco.uberspace.de'
 #alias hejquota='hejssh quota -gsl'
-alias hejinstall='bundle install --path ./vendor/bundle'  # the --deployment flag also uses ./vendor/bundle, but requires a Gemfile.lock, which in the case of a Jekyll upgrade may not be current
-alias hejserve='bundle exec jekyll serve'
-alias hejservei='bundle exec jekyll serve --incremental'
+#alias hejinstall='bundle install --path ./vendor/bundle'  # the --deployment flag also uses ./vendor/bundle, but requires a Gemfile.lock, which in the case of a Jekyll upgrade may not be current
+#alias hejserve='bundle exec jekyll serve'
+#alias hejservei='bundle exec jekyll serve --incremental'
+
+# jekyll
+alias jekyllinstall='bundle config set --local path "vendor/bundle"; bundle install'
+alias jekyllreinstall='rm Gemfile.lock; bundle config set --local path "vendor/bundle"; bundle install'
+alias jekyllserve='JEKYLL_NO_BUNDLER_REQUIRE=true bundle exec jekyll serve'
+alias jekyllservei='JEKYLL_NO_BUNDLER_REQUIRE=true bundle exec jekyll serve --incremental'
 
 # backup
 alias backup-fonts='~/Dropbox/code/backup/backup-fonts.sh'
