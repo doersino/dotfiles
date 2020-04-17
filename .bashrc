@@ -178,7 +178,8 @@ function __prompt_command() {
     PS1+="\$\[\033[0m\] "
 
     # set terminal title to basename of cwd
-    PS1="\e]0;\W\a""$PS1"
+    #PS1="\e]0;\W\a""$PS1"
+    update_terminal_cwd
 
     # and we're done!
 }
