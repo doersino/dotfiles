@@ -172,7 +172,7 @@ function __prompt_command() {
     # show python virtual environment if activated
     VENV=""
     [[ -n "$VIRTUAL_ENV" ]] && VENV="${VIRTUAL_ENV##*/}"
-    [[ -n "$VENV" ]] && PS1+="($venv) "
+    [[ -n "$VENV" ]] && PS1+="($VENV) "
 
     # $
     PS1+="\$\[\033[0m\] "
