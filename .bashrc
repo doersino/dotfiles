@@ -316,8 +316,10 @@ alias repair-readline='cd /usr/local/opt/readline/lib/ && ln libreadline.8.0.dyl
 # 22:22
 alias 2222='echo "Forever (h)waiting..."; while true; do [[ $(date | tr -s " " | cut -d" " -f 4 | cut -d":" -f 1) == $(date | tr -s " " | cut -d" " -f 4 | cut -d":" -f 2) ]] && date | tr -s " " | cut -d" " -f 4 | cut -d":" -f 1,2 | say || date | tr -s " " | cut -d" " -f 4; sleep 1; done'
 
-# ask hn
-alias askhn='python3 ~/Dropbox/code/scripts/askhn.py'
+# hn
+alias hn='python3 ~/Dropbox/code/scripts/hn.py'
+alias askhn='hn "ask hn"'
+alias showhn='hn "show hn"'
 
 ###############
 ## FUNCTIONS ##
