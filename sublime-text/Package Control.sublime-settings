@@ -5,7 +5,6 @@
 	],
 	"installed_packages":
 	[
-		"ANTLR syntax highlight",
 		"Color Highlight",
 		"CursorRuler",
 		"INI",
