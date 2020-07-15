@@ -34,11 +34,9 @@ if [ -z "$CHANGED" ]
 then
     echo "Nothing to commit, all dotfiles seem to be up to date"
 else
-    echo "Update $CHANGED" > "/tmp/commit-dotfiles-message.txt"
     git add .
-    git commit -F "/tmp/commit-dotfiles-message.txt" -e
+    git commit -m "Update $CHANGED" -e
     git push
-    rm "/tmp/commit-dotfiles-message.txt"
 fi
 
 cd "$WORKING_DIR"
