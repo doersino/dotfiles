@@ -73,7 +73,14 @@
 		"Sierpiński's",
 		"blockquote",
 		"blockquotes",
-		"guillemet"
+		"guillemet",
+		"cueing",
+		"pacey",
+		"mishit",
+		"overhit",
+		"overcut",
+		"underhit",
+		"cuttable"
 	],
 	"always_show_minimap_viewport": true,
 	"color_scheme": "Packages/Color Scheme - Default/Mariana.sublime-color-scheme",
@@ -91,6 +98,8 @@
 	[
 		"Vintage"
 	],
+	"line_padding_bottom": 0,
+	"line_padding_top": 0,
 	"margin": 2,
 	"mini_diff": "auto",
 	"minimap_scroll_to_clicked_text": false,
