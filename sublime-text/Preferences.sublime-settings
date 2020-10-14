@@ -80,7 +80,21 @@
 		"overhit",
 		"overcut",
 		"underhit",
-		"cuttable"
+		"cuttable",
+		"workflow",
+		"uncheck",
+		"megapixel",
+		"crosshairs",
+		"checkbox",
+		"cinemascope",
+		"hardcoded",
+		"megapixels",
+		"chilis",
+		"screenshot",
+		"Brachiosaurus",
+		"timelapse",
+		"Incheon",
+		"geotagged"
 	],
 	"always_show_minimap_viewport": true,
 	"color_scheme": "Packages/Color Scheme - Default/Mariana.sublime-color-scheme",
@@ -97,6 +111,18 @@
 	"ignored_packages":
 	[
 		"Vintage"
+	],
+	"ignored_words":
+	[
+		"Doersing",
+		"Instapaper",
+		"Minecraft",
+		"Reddit",
+		"Ubuntu",
+		"cronjob",
+		"shapefile",
+		"shapefiles",
+		"ærialbot"
 	],
 	"line_padding_bottom": 0,
 	"line_padding_top": 0,
