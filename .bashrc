@@ -424,3 +424,16 @@ function pyserve() {
     fi
     python3 -m http.server "$PORT"
 }
+
+# post a predefined point on @earthacrosstime
+function earthacrosstime() {
+    local USAGE
+    USAGE="usage: earthacrosstime 'LAT,LON' MAX_METERS_PER_PIXEL"
+    if [ -z "$2" ]; then
+        echo -e "$USAGE"; return 1
+    fi
+
+    POINT="$1"
+    MMPP="$2"  # roughly: below 16 => zoom 12, below 32 => zoom 11, etc.
+    leakyssh "/usr/bin/env bash -c 'cd /home/leakyabs/earthacrosstime && source bin/activate && python3 earthacrosstime.py -p \"$POINT\" -m $MMPP'"
+}
