@@ -94,7 +94,10 @@
 		"Brachiosaurus",
 		"timelapse",
 		"Incheon",
-		"geotagged"
+		"geotagged",
+		"workflows",
+		"desugaring",
+		"reimplement"
 	],
 	"always_show_minimap_viewport": true,
 	"color_scheme": "Packages/Color Scheme - Default/Mariana.sublime-color-scheme",
@@ -122,6 +125,7 @@
 		"cronjob",
 		"shapefile",
 		"shapefiles",
+		"webpack",
 		"ærialbot"
 	],
 	"line_padding_bottom": 0,
