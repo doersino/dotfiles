@@ -5,7 +5,7 @@
 ###############
 
 # postgres
-export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/10/bin"
+export PATH="./node_modules/.bin:$PATH:/Applications/Postgres.app/Contents/Versions/10/bin"
 
 alias psn='psql -c "drop database scratch;"; psql -c "create database scratch;"'  # reⓃew database
 alias psf='psql -d scratch -f'                                                    # execute Ⓕile
@@ -436,4 +436,22 @@ function earthacrosstime() {
     POINT="$1"
     MMPP="$2"  # roughly: below 16 => zoom 12, below 32 => zoom 11, etc.
     leakyssh "/usr/bin/env bash -c 'cd /home/leakyabs/earthacrosstime && source bin/activate && python3 earthacrosstime.py -p \"$POINT\" -m $MMPP'"
+}
+
+# resets a python virtual environment, frequently needed after homebrew installs
+# a new python version during the course of other upgrades
+function resetpythonvenv() {
+    echo "Deactivating..."
+    deactivate
+    echo "Nuking old virtual environment..."
+    rm -r bin
+    rm -r include
+    rm -r lib
+    rm pyvenv.cfg
+    echo "Setting up a fresh virtual environment..."
+    python3 -m venv .
+    echo "Activating..."
+    source bin/activate
+    echo "Reinstalling from requirements.txt..."
+    pip3 install -r requirements.txt
 }
