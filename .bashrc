@@ -272,15 +272,10 @@ alias exdls2='scp -rp ex.local:/home/noah/Downloads/ /Volumes/Time\ Capsule/exdl
 # raspberry pi
 alias pissh='ssh pi@raspberrypi.local'
 
-# internet websites
+# on-line internet websites
 alias noahdoerssh='ssh noahdoer@wirtanen.uberspace.de'
 alias leakyssh='ssh leakyabs@wild.uberspace.de'
 alias leakyquota='leakyssh quota -gsl'
-#alias hejssh='ssh -4 doersino@draco.uberspace.de'
-#alias hejquota='hejssh quota -gsl'
-#alias hejinstall='bundle install --path ./vendor/bundle'  # the --deployment flag also uses ./vendor/bundle, but requires a Gemfile.lock, which in the case of a Jekyll upgrade may not be current
-#alias hejserve='bundle exec jekyll serve'
-#alias hejservei='bundle exec jekyll serve --incremental'
 
 # jekyll
 alias jekyllinstall='bundle config set --local path "vendor/bundle"; bundle install'
