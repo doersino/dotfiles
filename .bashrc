@@ -283,6 +283,9 @@ alias jekyllreinstall='rm Gemfile.lock; bundle config set --local path "vendor/b
 alias jekyllserve='JEKYLL_NO_BUNDLER_REQUIRE=true bundle exec jekyll serve'
 alias jekyllservei='JEKYLL_NO_BUNDLER_REQUIRE=true bundle exec jekyll serve --incremental'
 
+# python (also see function further down)
+alias pyacti='source bin/activate'
+
 # backup
 alias backup-fonts='~/Dropbox/code/backup/backup-fonts.sh'
 alias backup-gists='~/Dropbox/code/backup/backup-gists.sh'
