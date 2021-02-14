@@ -1,22 +1,11 @@
 #!/bin/bash
 
-###############
-## TEMPORARY ##
-###############
-
-# postgres
-export PATH="./node_modules/.bin:$PATH:/Applications/Postgres.app/Contents/Versions/10/bin"
-
-alias psn='psql -c "drop database scratch;"; psql -c "create database scratch;"'  # reⓃew database
-alias psf='psql -d scratch -f'                                                    # execute Ⓕile
-alias psr='psql -d scratch'                                                       # open ⓇEPL
-
 
 ##########
 ## PATH ##
 ##########
 
-export PATH="$PATH:/usr/local/sbin:/Applications/Sublime Text.app/Contents/SharedSupport/bin:/Applications/Sublime Merge.app/Contents/SharedSupport/bin/"
+export PATH="./node_modules/.bin:$PATH:/Applications/Postgres.app/Contents/Versions/10/bin:/usr/local/sbin:/Applications/Sublime Text.app/Contents/SharedSupport/bin:/Applications/Sublime Merge.app/Contents/SharedSupport/bin/"
 
 
 ######################################
@@ -247,9 +236,10 @@ alias gp='g push'
 alias gl='g log'
 alias gls='g log --pretty=oneline --abbrev-commit -n 15'  # short log
 
-alias grau='g remote add upstream'  # argument: clone url of remote upstream repo
-alias gmakeeven='g fetch upstream && g checkout master && g merge upstream/master && gpom'  # in a fork, assuming no local changes have been made, fetch all new commits from upstream, merge them into the fork, and finally push
-alias gmakeevenforce='g fetch upstream && g checkout master && git reset --hard upstream/master && gpom --force'  # same except will "force pull" from upstream and you'll lose any local changes
+# postgres
+alias psn='psql -c "drop database scratch;"; psql -c "create database scratch;"'  # reⓃew database
+alias psf='psql -d scratch -f'                                                    # execute Ⓕile
+alias psr='psql -d scratch'                                                       # open ⓇEPL
 
 # image operations, based on imagemagick and ffmpeg
 alias 2png='mogrify -format png'
@@ -291,7 +281,6 @@ alias pyacti='source bin/activate'
 alias backup-fonts='~/Dropbox/code/backup/backup-fonts.sh'
 alias backup-gists='~/Dropbox/code/backup/backup-gists.sh'
 alias backup-tumblr='~/Dropbox/code/backup/backup-tumblr.sh'
-alias backup-uberspace='~/Dropbox/code/backup/backup-uberspace.sh'
 alias backup-uberspaces='~/Dropbox/code/backup/backup-uberspaces.sh'
 alias backup-do='~/Dropbox/code/backup/backup-do.sh'
 alias backup-sync='~/Dropbox/code/backup/backup-sync.sh'
@@ -308,9 +297,6 @@ alias datesbull='cd "/Volumes/Time Capsule" && { ls -1 *.mp4 | cut -d _ -f 1 | g
 alias backupbull='rsync -auv --progress --stats --include '"'"'./'"'"' --include '"'"'*.mp4'"'"' --exclude '"'"'*'"'"' "/Volumes/Time Capsule/" "/Volumes/one/davebull/"'
 alias backupbull2='rsync -auv --progress --stats --include '"'"'./'"'"' --include '"'"'*.mp4'"'"' --exclude '"'"'*'"'"' "/Volumes/Time Capsule/" "/Volumes/two/davebull/"'
 
-# awk depends on an old version of readline? idk, need to run this sometimes after brew upgrade???
-alias repair-readline='cd /usr/local/opt/readline/lib/ && ln libreadline.8.0.dylib libreadline.7.dylib'
-
 # 22:22
 alias 2222='echo "Forever (h)waiting..."; while true; do [[ $(date | tr -s " " | cut -d" " -f 4 | cut -d":" -f 1) == $(date | tr -s " " | cut -d" " -f 4 | cut -d":" -f 2) ]] && date | tr -s " " | cut -d" " -f 4 | cut -d":" -f 1,2 | say || date | tr -s " " | cut -d" " -f 4; sleep 1; done'
 
@@ -318,6 +304,7 @@ alias 2222='echo "Forever (h)waiting..."; while true; do [[ $(date | tr -s " " |
 alias hn='python3 ~/Dropbox/code/scripts/hn.py'
 alias askhn='hn "ask hn"'
 alias showhn='hn "show hn"'
+
 
 ###############
 ## FUNCTIONS ##
@@ -454,3 +441,16 @@ function resetpythonvenv() {
     echo "Reinstalling from requirements.txt..."
     pip3 install -r requirements.txt
 }
+
+
+##############################
+## OBSOLETE (but maybe not) ##
+##############################
+
+# awk depends on an old version of readline? idk, need to run this sometimes after brew upgrade???
+alias repair-readline='cd /usr/local/opt/readline/lib/ && ln libreadline.8.0.dylib libreadline.7.dylib'
+
+# seldom-used git stuff
+alias grau='g remote add upstream'  # argument: clone url of remote upstream repo
+alias gmakeeven='g fetch upstream && g checkout master && g merge upstream/master && gpom'  # in a fork, assuming no local changes have been made, fetch all new commits from upstream, merge them into the fork, and finally push
+alias gmakeevenforce='g fetch upstream && g checkout master && git reset --hard upstream/master && gpom --force'  # same except will "force pull" from upstream and you'll lose any local changes
