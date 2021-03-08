@@ -442,6 +442,32 @@ function resetpythonvenv() {
     pip3 install -r requirements.txt
 }
 
+# randomizes the names of the files given (i'm sure this could be more elegant)
+function randomname() {
+    for FILE in "$@"; do
+        BASE="${FILE%.*}"
+        EXT="${FILE#$BASE}"
+        EXT="${EXT#.}"  # correctly deal with names without extensions
+
+        # retry arbitrarily many times on (unlikely) collision
+        while true; do
+            NEW_BASE="$RANDOM$RANDOM$RANDOM"  # 32767^3 (ish) possibilities
+            if [ -n "$EXT" ]; then
+                NEW_FILE="$NEW_BASE.$EXT"
+            else
+                NEW_FILE="$NEW_BASE"
+            fi
+
+            # only write out if there's not already a file with that name
+            # (otherwise, try again)
+            if [ ! -f "$NEW_FILE" ]; then
+                mv -f -- "$FILE" "$NEW_FILE"
+                break
+            fi
+        done
+    done
+}
+
 
 ##############################
 ## OBSOLETE (but maybe not) ##
