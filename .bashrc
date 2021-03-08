@@ -468,6 +468,22 @@ function randomname() {
     done
 }
 
+# converts a bunch of images into an animated gif
+function gifmemore() {
+    local USAGE
+    USAGE="usage: gifmemore [--delay N] FILES (N is in hundredths of a second, e.g. 50 = 2 fps, default is 33)"
+    if [ -z "$1" ]; then
+        echo -e "$USAGE"; return 1
+    fi
+
+    DELAY=33
+    if [ "$1" == "--delay" ]; then
+        DELAY="$2"
+        shift 2
+    fi
+    convert -delay "$DELAY" -loop 0 -dispose previous "$@" out.gif
+}
+
 
 ##############################
 ## OBSOLETE (but maybe not) ##
