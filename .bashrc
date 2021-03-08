@@ -382,14 +382,15 @@ function onsave() {
 function unheic() {
     local USAGE
     USAGE="usage: unheic [--replace] FILES"
-    if [ -z "$1" ]; then
-        echo -e "$USAGE"; return 1
-    fi
 
     REPLACE=false
     if [ "$1" == "--replace" ]; then
         REPLACE=true
         shift
+    fi
+
+    if [ -z "$1" ]; then
+        echo -e "$USAGE"; return 1
     fi
 
     for FILE in "$@"; do
