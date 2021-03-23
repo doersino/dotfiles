@@ -102,7 +102,12 @@
 		"preinstalled",
 		"listicle",
 		"templating",
-		"dialogue"
+		"dialogue",
+		"pseudocode",
+		"dodgy",
+		"mockups",
+		"screenshots",
+		"shoutouts"
 	],
 	"always_show_minimap_viewport": true,
 	"color_scheme": "Packages/Color Scheme - Default/Mariana.sublime-color-scheme",
@@ -124,8 +129,10 @@
 	[
 		"Bandcamp",
 		"Doersing",
+		"Facebook",
 		"Instapaper",
 		"Minecraft",
+		"Pandoc",
 		"Reddit",
 		"Ubuntu",
 		"cronjob",
