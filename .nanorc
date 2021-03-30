@@ -1,0 +1,21 @@
+# Use auto-indentation
+unset autoindent
+
+# Use smooth scrolling as the default
+set smooth
+
+# Use this tab size instead of the default; it must be greater than 0
+set tabsize 4
+
+# Use cut to end of line with ^K by default
+set cut
+
+# Enable mouse support
+set mouse
+
+# Constantly display the cursor position in the status bar.
+set const
+
+# Color EOL spaces and tabs
+syntax "" "\.*$"
+color ,black "[[:space:]]+$"

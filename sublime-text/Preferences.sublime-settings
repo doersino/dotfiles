@@ -109,7 +109,9 @@
 		"screenshots",
 		"shoutouts",
 		"gochujang",
-		"gochugaru"
+		"gochugaru",
+		"backticks",
+		"multiline"
 	],
 	"always_show_minimap_viewport": true,
 	"color_scheme": "Packages/Color Scheme - Default/Mariana.sublime-color-scheme",
@@ -135,6 +137,7 @@
 		"Homebrew",
 		"Instapaper",
 		"Minecraft",
+		"Nearley",
 		"Pandoc",
 		"Reddit",
 		"Ubuntu",
