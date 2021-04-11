@@ -111,7 +111,9 @@
 		"gochujang",
 		"gochugaru",
 		"backticks",
-		"multiline"
+		"multiline",
+		"headlessly",
+		"Yay"
 	],
 	"always_show_minimap_viewport": true,
 	"color_scheme": "Packages/Color Scheme - Default/Mariana.sublime-color-scheme",
@@ -141,6 +143,7 @@
 		"Pandoc",
 		"Reddit",
 		"Ubuntu",
+		"bashrc",
 		"cronjob",
 		"shapefile",
 		"shapefiles",
