@@ -305,6 +305,10 @@ alias hn='python3 ~/Dropbox/code/scripts/hn.py'
 alias askhn='hn "ask hn"'
 alias showhn='hn "show hn"'
 
+# kestrels
+alias kestrelsyncn='backup-sync -n /Volumes/Time\ Capsule/_kestrels_update_feb2021onwards/ /Volumes/UNTITLED/_kestrels_update_feb2021onwards/'
+alias kestrelsync='backup-sync /Volumes/Time\ Capsule/_kestrels_update_feb2021onwards/ /Volumes/UNTITLED/_kestrels_update_feb2021onwards/'
+
 
 ###############
 ## FUNCTIONS ##
