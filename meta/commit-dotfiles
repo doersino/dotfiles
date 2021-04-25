@@ -20,6 +20,9 @@ cp "$ST3_PREFIX/Package Control.sublime-settings" "$DOTFILES_REPO/sublime-text/"
 cp "$ST3_PREFIX/Color Highlight.sublime-settings" "$DOTFILES_REPO/sublime-text/"
 cp "$ST3_PREFIX/CursorRuler.sublime-settings" "$DOTFILES_REPO/sublime-text/"
 cp "$ST3_PREFIX/GitGutter.sublime-settings" "$DOTFILES_REPO/sublime-text/"
+cp "$ST3_PREFIX/StandardFormat.sublime-settings" "$DOTFILES_REPO/sublime-text/"
+cp "$ST3_PREFIX/trailing_spaces.sublime-settings" "$DOTFILES_REPO/sublime-text/"
+cp "$ST3_PREFIX/obrien.sublime-snippet" "$DOTFILES_REPO/sublime-text/"
 # cp "$ST3_PREFIX/MarkdownPreview.sublime-settings" "$DOTFILES_REPO/sublime-text/"  # purposefully excluded, this one contains a GitHub access token
 
 # sublime merge config
