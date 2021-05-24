@@ -117,7 +117,11 @@
 		"codec",
 		"filesizes",
 		"timestamp",
-		"Photoshop"
+		"Photoshop",
+		"transcoding",
+		"grimoire",
+		"sublicense",
+		"smorgasbord"
 	],
 	"always_show_minimap_viewport": true,
 	"color_scheme": "Packages/Color Scheme - Default/Mariana.sublime-color-scheme",
