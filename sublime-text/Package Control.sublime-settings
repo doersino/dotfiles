@@ -15,12 +15,10 @@
 		"StandardFormat",
 		"SublimeLinter",
 		"SublimeLinter-annotations",
-		"SublimeLinter-javac",
 		"SublimeLinter-php",
 		"SublimeLinter-pylint",
 		"SublimeLinter-shellcheck",
 		"TrailingSpaces",
-		"UnicodeMath",
 	],
 	"repositories":
 	[
