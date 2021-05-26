@@ -137,7 +137,7 @@
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
-		"Vintage"
+		"Vintage",
 	],
 	"ignored_words":
 	[
@@ -177,5 +177,5 @@
 	"tab_completion": false,
 	"theme": "Adaptive.sublime-theme",
 	"translate_tabs_to_spaces": true,
-	"trim_trailing_white_space_on_save": false
+	"trim_trailing_white_space_on_save": false,
 }
