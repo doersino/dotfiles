@@ -248,7 +248,7 @@ alias 2jpg='mogrify -format jpg -quality 95'
 alias png2jpg='for i in *.png; do mogrify -format jpg -quality 95 "$i" && rm "$i"; done'
 alias png2jpg90='for i in *.png; do mogrify -format jpg -quality 90 "$i" && rm "$i"; done'
 alias resize1k='mogrify -resize 1000'
-alias resize720p='mogrify -resize x720'
+alias resize720pj='convert -resize x720 -format jpg -quality 90'
 alias jpg2mp4='ffmpeg -framerate 24 -pattern_type glob -i '"'"'*.jpg'"'"' -pix_fmt yuv420p out.mp4'
 
 
