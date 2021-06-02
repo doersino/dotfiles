@@ -5,7 +5,10 @@
 ## PATH ##
 ##########
 
-export PATH="./node_modules/.bin:$PATH:/Applications/Postgres.app/Contents/Versions/10/bin:/usr/local/sbin:/Applications/Sublime Text.app/Contents/SharedSupport/bin:/Applications/Sublime Merge.app/Contents/SharedSupport/bin/"
+PATH_SMERGE="/Applications/Sublime Merge.app/Contents/SharedSupport/bin/"
+PATH_SUBL="/Applications/Sublime Text.app/Contents/SharedSupport/bin/"
+PATH_PG="/Applications/Postgres.app/Contents/Versions/10/bin"
+export PATH="./node_modules/.bin:/usr/local/sbin:$PATH:$PATH_PG:$PATH_SUBL:$PATH_SMERGE"
 
 
 ######################################
