@@ -507,5 +507,5 @@ alias repair-readline='cd /usr/local/opt/readline/lib/ && ln libreadline.8.0.dyl
 
 # seldom-used git stuff
 alias grau='g remote add upstream'  # argument: clone url of remote upstream repo
-alias gmakeeven='g fetch upstream && g checkout master && g merge upstream/master && gpom'  # in a fork, assuming no local changes have been made, fetch all new commits from upstream, merge them into the fork, and finally push
-alias gmakeevenforce='g fetch upstream && g checkout master && git reset --hard upstream/master && gpom --force'  # same except will "force pull" from upstream and you'll lose any local changes
+alias gmakeeven='g fetch upstream && g checkout master && g merge upstream/master && git push'  # in a fork, assuming no local changes have been made, fetch all new commits from upstream, merge them into the fork, and finally push
+alias gmakeevenforce='g fetch upstream && g checkout master && git reset --hard upstream/master && git push --force'  # same except will "force pull" from upstream and you'll lose any local changes
