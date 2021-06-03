@@ -314,6 +314,9 @@ alias showhn='hn "show hn"'
 alias kestrelsyncn='backup-sync -n /Volumes/UNTITLED/_kestrels_update_feb2021onwards/ /Volumes/Time\ Capsule/_kestrels_update_feb2021onwards/'
 alias kestrelsync='backup-sync /Volumes/UNTITLED/_kestrels_update_feb2021onwards/ /Volumes/Time\ Capsule/_kestrels_update_feb2021onwards/'
 
+# github sponsor
+alias setupgithubsponsors='mkdir ".github"; echo "github: doersino" > ".github/FUNDING.yml"; ga ".github/FUNDING.yml"; gc "Add FUNDING.yml"; git push'
+
 
 ###############
 ## FUNCTIONS ##
