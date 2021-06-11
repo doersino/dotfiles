@@ -121,7 +121,9 @@
 		"transcoding",
 		"grimoire",
 		"sublicense",
-		"smorgasbord"
+		"smorgasbord",
+		"walkthrough",
+		"lookups",
 	],
 	"always_show_minimap_viewport": true,
 	"color_scheme": "Packages/Color Scheme - Default/Mariana.sublime-color-scheme",
@@ -141,12 +143,15 @@
 	],
 	"ignored_words":
 	[
+		"2000s",
 		"Bandcamp",
 		"Doersing",
 		"Facebook",
+		"Harlond",
 		"Homebrew",
 		"Instapaper",
 		"Minecraft",
+		"Morrowind",
 		"Nearley",
 		"Pandoc",
 		"Pentax",
@@ -160,7 +165,8 @@
 		"subsetting",
 		"tixyz",
 		"webpack",
-		"ærialbot"
+		"y'know",
+		"ærialbot",
 	],
 	"line_padding_bottom": 0,
 	"line_padding_top": 0,
