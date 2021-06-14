@@ -1,6 +1,10 @@
---\pset linestyle unicode
---\pset border 2
---\pset null ⬮
---\timing on
---\set COMP_KEYWORD_CASE upper
+\pset border 2
+\pset linestyle unicode
+\pset unicode_header_linestyle double
+
+\pset null ⬮
+
+\timing on
+
+\set COMP_KEYWORD_CASE upper
 \set HISTFILE ~/.psql_history_ :DBNAME
