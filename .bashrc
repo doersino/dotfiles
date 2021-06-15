@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 
 ##########
 ## PATH ##
@@ -349,26 +351,33 @@ function vol() {
     fi
 }
 
-# save keystrokes for some common actions when controlling itunes remotely with
-# applescript (this will pop up a permission dialog the first time it's run)
+# save keystrokes for some common actions when controlling itunes or apple music
+# remotely with applescript (this might pop up a permission dialog the first
+# time it's run)
 # https://github.com/doersino/scripts/blob/master/it.sh
 function it() {
+    ITUNES="iTunes"
+    if [ -d "/System/Applications/Music.app" ]; then
+        ITUNES="Music"
+    fi
+
     if [ -z "$1" ]; then
-        osascript -e 'tell application "iTunes" to playpause'
+        osascript -e "tell application \"$ITUNES\" to playpause"
     elif [ "$1" = "?" ]; then
-        osascript -e 'tell application "iTunes" to get name of current track'
+        osascript -e "tell application \"$ITUNES\" to get name of current track"
         printf "\033[90mby \033[0m"
-        osascript -e 'tell application "iTunes" to get artist of current track'
+        osascript -e "tell application \"$ITUNES\" to get artist of current track"
         printf "\033[90mon \033[0m"
-        osascript -e 'tell application "iTunes" to get album of current track'
+        osascript -e "tell application \"$ITUNES\" to get album of current track"
     elif [ "$1" = "prev" ]; then
-        osascript -e 'tell application "iTunes" to play previous track'
+        osascript -e "tell application \"$ITUNES\" to play previous track"
     elif [ "$1" = "next" ]; then
-        osascript -e 'tell application "iTunes" to play next track'
+        osascript -e "tell application \"$ITUNES\" to play next track"
     else
-        osascript -e "tell application \"iTunes\" to $1"
+        osascript -e "tell application \"$ITUNES\" to $1"
     fi
 }
+
 
 # extract fonts used in a pdf
 # https://stackoverflow.com/a/3489099
