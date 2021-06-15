@@ -2,6 +2,9 @@
 
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
+# required for ruby in catalina or later, see https://jekyllrb.com/docs/installation/macos/
+export SDKROOT=$(xcrun --show-sdk-path)
+
 
 ##########
 ## PATH ##
@@ -10,7 +13,8 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 PATH_SMERGE="/Applications/Sublime Merge.app/Contents/SharedSupport/bin/"
 PATH_SUBL="/Applications/Sublime Text.app/Contents/SharedSupport/bin/"
 PATH_PG="/Applications/Postgres.app/Contents/Versions/10/bin"
-export PATH="./node_modules/.bin:/usr/local/sbin:$PATH:$PATH_PG:$PATH_SUBL:$PATH_SMERGE"
+PATH_RUBY="/Users/noah/.gem/ruby/2.6.0/bin"  # need to change on ruby updates
+export PATH="./node_modules/.bin:/usr/local/sbin:$PATH_RUBY:$PATH:$PATH_PG:$PATH_SUBL:$PATH_SMERGE"
 
 
 ######################################
@@ -276,10 +280,10 @@ alias leakyssh='ssh leakyabs@wild.uberspace.de'
 alias leakyquota='leakyssh quota -gsl'
 
 # jekyll
-alias jekyllinstall='bundle config set --local path "vendor/bundle"; bundle install'
-alias jekyllreinstall='rm Gemfile.lock; bundle config set --local path "vendor/bundle"; bundle install'
-alias jekyllserve='JEKYLL_NO_BUNDLER_REQUIRE=true bundle exec jekyll serve'
-alias jekyllservei='JEKYLL_NO_BUNDLER_REQUIRE=true bundle exec jekyll serve --incremental'
+alias jekyllinstall='bundle install'
+alias jekyllreinstall='rm Gemfile.lock; bundle install; bundle lock --add-platform ruby'
+alias jekyllserve='bundle exec jekyll serve'
+alias jekyllservei='bundle exec jekyll serve --incremental'
 
 # python (also see function further down)
 alias pyacti='source bin/activate'
