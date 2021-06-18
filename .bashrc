@@ -1,8 +1,9 @@
 #!/bin/bash
 
+# some zsh's witnesses are at the door, let's shut them out
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
-# required for ruby in catalina or later, see https://jekyllrb.com/docs/installation/macos/
+# required (?) for ruby in catalina or later, see https://jekyllrb.com/docs/installation/macos/
 export SDKROOT=$(xcrun --show-sdk-path)
 
 
@@ -10,11 +11,13 @@ export SDKROOT=$(xcrun --show-sdk-path)
 ## PATH ##
 ##########
 
+PATH_NODE="./node_modules/.bin"
+PATH_RUBY="/Users/noah/.gem/ruby/2.6.0/bin"  # need to change on ruby updates (i.e. macos updates)
+PATH_PIPX="/Users/noah/.local/bin"
+PATH_PG="/Applications/Postgres.app/Contents/Versions/10/bin"  # need to change on pg updates
 PATH_SMERGE="/Applications/Sublime Merge.app/Contents/SharedSupport/bin/"
 PATH_SUBL="/Applications/Sublime Text.app/Contents/SharedSupport/bin/"
-PATH_PG="/Applications/Postgres.app/Contents/Versions/10/bin"
-PATH_RUBY="/Users/noah/.gem/ruby/2.6.0/bin"  # need to change on ruby updates
-export PATH="./node_modules/.bin:/usr/local/sbin:$PATH_RUBY:$PATH:$PATH_PG:$PATH_SUBL:$PATH_SMERGE"
+export PATH="$PATH_NODE:$PATH_PIPX:$PATH_RUBY:$PATH:$PATH_PG:$PATH_SUBL:$PATH_SMERGE"
 
 
 ######################################
@@ -360,11 +363,14 @@ function vol() {
 # time it's run)
 # https://github.com/doersino/scripts/blob/master/it.sh
 function it() {
+
+    # select available player
     ITUNES="iTunes"
     if [ -d "/System/Applications/Music.app" ]; then
         ITUNES="Music"
     fi
 
+    # do the things
     if [ -z "$1" ]; then
         osascript -e "tell application \"$ITUNES\" to playpause"
     elif [ "$1" = "?" ]; then
