@@ -160,6 +160,7 @@
 		"Pandoc",
 		"Pentax",
 		"Reddit",
+		"Swinsian",
 		"Ubuntu",
 		"bashrc",
 		"cronjob",
@@ -189,4 +190,5 @@
 	"theme": "Adaptive.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": false,
+	"auto_match_enabled": false,
 }
