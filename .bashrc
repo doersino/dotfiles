@@ -223,6 +223,7 @@ alias sm='smerge .'
 alias ytdl='youtube-dl'
 alias grep='grep --color=auto'     # highlight search phrase
 alias timestamp='date +%s'
+alias recentlymodified='find . -type f -print0 | xargs -0 gstat --format "%Y :%y %n" | sort -nr | cut -d: -f2- | head'  # accepts e.g. "-n 50" argument
 alias pingg='prettyping --nolegend -i 0.1 google.com'
 alias ip='curl ipinfo.io/ip'
 alias duls='du -h -d1 | sort -r'   # list disk usage statistics for the current folder, via https://github.com/jez/dotfiles/blob/master/util/aliases.sh
@@ -453,21 +454,34 @@ function earthacrosstime() {
 }
 
 # resets a python virtual environment, frequently needed after homebrew installs
-# a new python version during the course of other upgrades
+# a new python version during the course of other upgrades, can also be used to
+# create a new environment
 function resetpythonvenv() {
-    echo "Deactivating..."
-    deactivate
-    echo "Nuking old virtual environment..."
-    rm -r bin
-    rm -r include
-    rm -r lib
-    rm pyvenv.cfg
+    if [ ! -z "$VIRTUAL_ENV" ]; then
+        echo "Deactivating..."
+        deactivate
+    else
+        echo "No venv active, skipped 'deactivate' step."
+    fi
+    if [ -d "bin" ]; then
+        echo "Nuking old virtual environment..."
+        rm -r bin
+        rm -r include
+        rm -r lib
+        rm pyvenv.cfg
+    else
+        echo "No 'bin' directory present, skipped nuking step."
+    fi
     echo "Setting up a fresh virtual environment..."
     python3 -m venv .
     echo "Activating..."
     source bin/activate
-    echo "Reinstalling from requirements.txt..."
-    pip3 install -r requirements.txt
+    if [ -f "requirements.txt" ]; then
+        echo "Reinstalling from requirements.txt..."
+        pip3 install -r requirements.txt
+    else
+        echo "No 'requirements.txt' found, skipped reinstall step."
+    fi
 }
 
 # randomizes the names of the files given (i'm sure this could be more elegant)
