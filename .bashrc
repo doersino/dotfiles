@@ -360,8 +360,8 @@ function vol() {
 }
 
 # save keystrokes for some common actions when controlling itunes or apple music
-# remotely with applescript (this might pop up a permission dialog the first
-# time it's run)
+# or swinsian (thanks to all of them supporting the same actions) remotely with
+# applescript (this might pop up a permission dialog the first time it's run)
 # https://github.com/doersino/scripts/blob/master/it.sh
 function it() {
 
@@ -369,6 +369,9 @@ function it() {
     ITUNES="iTunes"
     if [ -d "/System/Applications/Music.app" ]; then
         ITUNES="Music"
+    fi
+    if [ -d "/Applications/Swinsian.app" ]; then
+        ITUNES="Swinsian"
     fi
 
     # do the things
