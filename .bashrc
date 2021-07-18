@@ -456,6 +456,18 @@ function earthacrosstime() {
     leakyssh "/usr/bin/env bash -c 'cd /home/leakyabs/earthacrosstime && source bin/activate && python3 earthacrosstime.py -p \"$POINT\" -m $MMPP'"
 }
 
+# similarly, post a predefined point on @placesfromorbit
+function placesfromorbit() {
+    local USAGE
+    USAGE="usage: placesfromorbit 'LAT,LON'"
+    if [ -z "$1" ]; then
+        echo -e "$USAGE"; return 1
+    fi
+
+    POINT="$1"
+    leakyssh "/usr/bin/env bash -c 'cd /home/leakyabs/aerialbot && source bin/activate && python3 aerialbot.py config-placesfromorbit.ini -p \"$POINT\""
+}
+
 # resets a python virtual environment, frequently needed after homebrew installs
 # a new python version during the course of other upgrades, can also be used to
 # create a new environment
