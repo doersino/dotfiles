@@ -269,16 +269,18 @@ alias jpg2mp4='ffmpeg -framerate 24 -pattern_type glob -i '"'"'*.jpg'"'"' -pix_f
 ## PERSONAL ALIASES ##
 ######################
 
+alias cdcode='cd ~/Dropbox/code/'
+
 # old laptop
 alias exssh='ssh -XY ex.local'
 alias exmcs='ssh -t ex.local "screen -r mcs"'  # minecraft server, detach with ctrl + a, then d
 alias exdls='scp -rp ex.local:/home/noah/Downloads/ ~/Desktop/exdls/'
 alias exdls2='scp -rp ex.local:/home/noah/Downloads/ /Volumes/Time\ Capsule/exdls/'
 
-# raspberry pi
+# raspberry pi (brachiograph)
 alias pissh='ssh pi@raspberrypi.local'
 
-# on-line internet websites
+# on-line internet web sites
 alias noahdoerssh='ssh noahdoer@wirtanen.uberspace.de'
 alias leakyssh='ssh leakyabs@wild.uberspace.de'
 alias leakyquota='leakyssh quota -gsl'
