@@ -465,7 +465,7 @@ function placesfromorbit() {
     fi
 
     POINT="$1"
-    leakyssh "/usr/bin/env bash -c 'cd /home/leakyabs/aerialbot && source bin/activate && python3 aerialbot.py config-placesfromorbit.ini -p \"$POINT\""
+    leakyssh "/usr/bin/env bash -c 'cd /home/leakyabs/aerialbot && source bin/activate && python3 aerialbot.py config-placesfromorbit.ini -p \"$POINT\"'"
 }
 
 # resets a python virtual environment, frequently needed after homebrew installs
