@@ -318,10 +318,6 @@ alias hn='python3 ~/Dropbox/code/scripts/hn.py'
 alias askhn='hn "ask hn"'
 alias showhn='hn "show hn"'
 
-# kestrels
-alias kestrelsyncn='backup-sync -n /Volumes/UNTITLED/_kestrels_update_feb2021onwards/ /Volumes/Time\ Capsule/_kestrels_update_feb2021onwards/'
-alias kestrelsync='backup-sync /Volumes/UNTITLED/_kestrels_update_feb2021onwards/ /Volumes/Time\ Capsule/_kestrels_update_feb2021onwards/'
-
 # github sponsor
 alias setupgithubsponsors='mkdir ".github"; echo "github: doersino" > ".github/FUNDING.yml"; ga ".github/FUNDING.yml"; gc "Add FUNDING.yml"; git push'
 
@@ -435,6 +431,68 @@ function unheic() {
         fi
     done
 }
+
+# similar to unheic, this creates perceptially losslessly converted mp4 versions
+# of mjpeg-encoded AVI videos shot using my antiquated DSLR – the results are
+# 50% to 90% smaller than the originals. as with unheic, the input files can be
+# located in different directories; each conversion result ends up "next to" its
+# respective original or replaces it if the --replace flag is set. requires
+# ffmpeg (along with patience and fan noise tolerance) and gtouch (part of
+# coreutils) for transferring the originals' modification date to the result
+function unavi() {
+    local USAGE
+    USAGE="usage: unavi [--replace] FILES"
+
+    REPLACE=false
+    if [ "$1" == "--replace" ]; then
+        REPLACE=true
+        shift
+    fi
+
+    if [ -z "$1" ]; then
+        echo -e "$USAGE"; return 1
+    fi
+
+    # sanity check
+    if [ "$REPLACE" = true ]; then
+        echo "About to convert the following files and delete the originals:"
+        for FILE in "$@"; do
+            echo "  $FILE"
+        done
+        read -p "Continue (y/N)? "
+        [ "$REPLY" = "y" ] || return 1
+    fi
+
+    # do all this in a subshell so any exit caused by set -e won't terminate the
+    # session, see https://stackoverflow.com/a/15302061
+    (
+        set -e
+        for FILE in "$@"; do
+            NO_EXT="${FILE%.*}"
+
+            # see https://github.com/doersino/ffmpeg-koraktor#almost-losslessly-converting-a-video-from-mjpegpcm_s16le-to-h264aac
+            ffmpeg -i "$FILE" -c:v libx264 -preset fast -crf 18 -c:a aac -b:a 192k "$NO_EXT".mp4
+            gtouch -d "$(date -R -r "$FILE")" "$NO_EXT".mp4
+            if [ $REPLACE == true ]; then
+                rm "$FILE"
+            fi
+        done
+        set +e
+    )
+}
+
+# now, an alias to ease my typical use case of unavi. the '"'"' are just escaped
+# single quotes, the -print0 and -0 bits make things work with spaces-containing
+# filenames, the _ makes sure any additional arguments passed to the alias
+# (like the --replace flag) are forwarded to unavi, and the </dev/tty seems to
+# be required for unavi to receive user input, see
+# https://unix.stackexchange.com/a/403802. one feature of this (when used with
+# the --replace flag) is that you can ctrl-C and later restart while only losing
+# the conversion progress on the current file, everything that's already
+# converted persists, and nothing gets converted twice or deleted before
+# successful conversion (i think and hope)
+export -f unavi
+alias unavi_all_imgp='find . -name '"'"'IMGP*.AVI'"'"' -print0 | xargs -0 bash -c '"'"'unavi "$@" </dev/tty'"'"' _'
 
 # serve the cwd on a given port
 function pyserve() {
@@ -555,3 +613,7 @@ alias repair-readline='cd /usr/local/opt/readline/lib/ && ln libreadline.8.0.dyl
 alias grau='g remote add upstream'  # argument: clone url of remote upstream repo
 alias gmakeeven='g fetch upstream && g checkout master && g merge upstream/master && git push'  # in a fork, assuming no local changes have been made, fetch all new commits from upstream, merge them into the fork, and finally push
 alias gmakeevenforce='g fetch upstream && g checkout master && git reset --hard upstream/master && git push --force'  # same except will "force pull" from upstream and you'll lose any local changes
+
+# kestrels
+alias kestrelsyncn='backup-sync -n /Volumes/UNTITLED/_kestrels_update_feb2021onwards/ /Volumes/Time\ Capsule/_kestrels_update_feb2021onwards/'
+alias kestrelsync='backup-sync /Volumes/UNTITLED/_kestrels_update_feb2021onwards/ /Volumes/Time\ Capsule/_kestrels_update_feb2021onwards/'
