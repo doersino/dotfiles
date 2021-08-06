@@ -493,6 +493,8 @@ function unavi() {
 # successful conversion (i think and hope)
 export -f unavi
 alias unavi_all_imgp='find . -name '"'"'IMGP*.AVI'"'"' -print0 | xargs -0 bash -c '"'"'unavi "$@" </dev/tty'"'"' _'
+alias unavi_all_imgp_size_before='find . -type f -name 'IMGP*.AVI' -exec du -ch {} + | grep total$'
+alias unavi_all_imgp_size_after='find . -type f -name 'IMGP*.mp4' -exec du -ch {} + | grep total$'
 
 # serve the cwd on a given port
 function pyserve() {
