@@ -152,7 +152,6 @@
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
-		"StandardFormat",
 		"Vintage",
 	],
 	"ignored_words":
