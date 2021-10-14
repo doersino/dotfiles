@@ -530,6 +530,19 @@ function placesfromorbit() {
     leakyssh "/usr/bin/env bash -c 'cd /home/leakyabs/aerialbot && source bin/activate && python3 aerialbot.py config-placesfromorbit.ini -p=\"$POINT\"'"
 }
 
+# ...and the same for @citiesatanangle (here, the first argument is the view direction)
+function citiesatanangle() {
+    local USAGE
+    USAGE="usage: placesfromorbit DIRECTION 'LAT,LON'"
+    if [ -z "$2" ]; then
+        echo -e "$USAGE"; return 1
+    fi
+
+    DIRECTION="$1"
+    POINT="$2"
+    leakyssh "/usr/bin/env bash -c 'cd /home/leakyabs/aerialbot && source bin/activate && python3 aerialbot.py config-citiesatanangle.ini -p=\"$POINT\" --direction \"$DIRECTION\"'"
+}
+
 # resets a python virtual environment, frequently needed after homebrew installs
 # a new python version during the course of other upgrades, can also be used to
 # create a new environment
