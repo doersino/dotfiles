@@ -220,7 +220,8 @@ alias space2_='for i in *; do [[ $i == *" "* ]] && mv "$i" ${i// /_}; done'
 # ulitities
 alias s='subl'
 alias sm='smerge .'
-alias ytdl='youtube-dl'
+alias ytdl='yt-dlp'
+alias youtube-dl='ytdl'
 alias grep='grep --color=auto'     # highlight search phrase
 alias timestamp='date +%s'
 alias recentlymodified='find . -type f -print0 | xargs -0 gstat --format "%Y :%y %n" | sort -nr | cut -d: -f2- | head'  # accepts e.g. "-n 50" argument
