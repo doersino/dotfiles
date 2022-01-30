@@ -243,7 +243,8 @@ alias refresh-bashrc='source ~/.bashrc'
 
 # git
 alias g='git'
-alias gs='g status'  # collision with ghostscript executable
+alias gs='g status'  # collision with ghostscript executable, hence:
+alias ghostscript='/usr/local/bin/gs'
 alias gd='g diff'
 alias ga='g add'
 alias gc='g commit -m'
@@ -615,6 +616,23 @@ function gifmemore() {
         shift 2
     fi
     convert -delay "$DELAY" -loop 0 -dispose previous "$@" out.gif
+}
+
+
+# compresses a pdf quite dramatically without apparent loss of quality (but may
+# degrade searchability and compatibility, also takes a while)
+# https://leancrew.com/all-this/2022/01/reducing-the-size-of-large-pdfs/
+# https://gist.github.com/firstdoit/6390547
+function compresspdf() {
+    local USAGE
+    USAGE="usage: compresspdf INPUT_FILE OUTPUT_FILE"
+    if [ -z "$2" ]; then
+        echo -e "$USAGE"; return 1
+    fi
+
+    IN="$1"
+    OUT="$2"
+    ghostscript -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$OUT" "$IN"
 }
 
 
