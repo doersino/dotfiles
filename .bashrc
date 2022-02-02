@@ -286,6 +286,7 @@ alias pissh='ssh pi@raspberrypi.local'
 alias noahdoerssh='ssh noahdoer@wirtanen.uberspace.de'
 alias leakyssh='ssh leakyabs@wild.uberspace.de'
 alias leakyquota='leakyssh quota -gsl'
+alias leakytidyup='leakyssh bash tidyup.sh'
 
 # jekyll
 alias jekyllinstall='bundle install'
