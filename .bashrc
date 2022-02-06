@@ -636,6 +636,11 @@ function compresspdf() {
     ghostscript -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$OUT" "$IN"
 }
 
+# command-line wordle, via https://twitter.com/yamaya/status/1487764102462140421
+function wordle() {
+    awk 'BEGIN{for(srand()srand(srand()/86400);getline<"/usr/share/dict/words";FS=_)length==5&&/^[a-z]*$/&&b[a[i++]=$0]=1;t=a[int(rand()*i)];printf">"}q=b[w=$0]{++j;for(x=i="^";++i<6;x=x".")$i="\33[4"(t~x$i?2:t~$i?3:_)"m"toupper($i)"\33[m"}q||$0="bad word";j>5||w==t{exit}{printf">"}'
+}
+
 
 ##############################
 ## OBSOLETE (but maybe not) ##
