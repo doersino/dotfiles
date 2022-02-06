@@ -344,19 +344,42 @@ function settitle() {
 function vol() {
     local USAGE
     USAGE="usage: vol [-h | NUMBER_FROM_0_TO_100 | -DECREMENT | +INCREMENT]"
-    if [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
+    if [ "$1" == "-h" ] || [ "$1" == "--help" ] || ! [[ "$1" =~ ^$|^[+-]?[0-9]+$ ]]; then
         echo -e "$USAGE"
         return 1
     fi
 
+    OLD_VOLUME="$(osascript -e "output volume of (get volume settings)")"
+
     if [ -z "$1" ]; then
-        osascript -e "output volume of (get volume settings)"
-    elif [[ "$1" == -* ]]; then
-        osascript -e "set volume output volume (output volume of (get volume settings) $1)"
-    elif [[ "$1" == +* ]]; then
-        osascript -e "set volume output volume (output volume of (get volume settings) $1)"
+        echo "$OLD_VOLUME"
     else
-        osascript -e "set volume output volume $1"
+        # default case: just set volume to passed value
+        NEW_VOLUME="$1"
+
+        # decrement or increment?
+        if [[ "$1" == -* ]] || [[ "$1" == +* ]]; then
+            NEW_VOLUME=$(($OLD_VOLUME + $1))
+        fi
+
+        # clamp to [0, 100]
+        if [ "$NEW_VOLUME" -lt 0 ] ; then
+            NEW_VOLUME=0
+        fi
+        if [ "$NEW_VOLUME" -gt 100 ] ; then
+            NEW_VOLUME=100
+        fi
+
+        # give feedback
+        MUTED=""
+        if [ "$NEW_VOLUME" -eq 0 ]; then
+            MUTED="(muted)"
+        fi
+        echo "$OLD_VOLUME -> $NEW_VOLUME $MUTED"
+
+        # set
+        osascript -e "set volume output volume $NEW_VOLUME"
+        #osascript -e "set volume output volume (output volume of (get volume settings) $INCREMENT)"
     fi
 }
 
