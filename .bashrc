@@ -342,22 +342,24 @@ function settitle() {
 
 # get or set the volume on a mac, in percent
 function vol() {
-    local USAGE
-    USAGE="usage: vol [-h | NUMBER_FROM_0_TO_100 | -DECREMENT | +INCREMENT]"
+    USAGE="usage: vol [-h | --help | NUMBER_FROM_0_TO_100 | -DECREMENT | +INCREMENT]"
+
+    # if the argument isn't one of the expected values, display usage instructions
     if [ "$1" == "-h" ] || [ "$1" == "--help" ] || ! [[ "$1" =~ ^$|^[+-]?[0-9]+$ ]]; then
-        echo -e "$USAGE"
+        echo "$USAGE"
         return 1
     fi
 
+    # retrieve old volume
     OLD_VOLUME="$(osascript -e "output volume of (get volume settings)")"
 
     if [ -z "$1" ]; then
         echo "$OLD_VOLUME"
     else
-        # default case: just set volume to passed value
+        # default case: just set volume to specified value
         NEW_VOLUME="$1"
 
-        # decrement or increment?
+        # alternatively: decrement or increment?
         if [[ "$1" == -* ]] || [[ "$1" == +* ]]; then
             NEW_VOLUME=$(($OLD_VOLUME + $1))
         fi
@@ -379,7 +381,6 @@ function vol() {
 
         # set
         osascript -e "set volume output volume $NEW_VOLUME"
-        #osascript -e "set volume output volume (output volume of (get volume settings) $INCREMENT)"
     fi
 }
 
