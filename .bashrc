@@ -390,30 +390,30 @@ function vol() {
 # https://github.com/doersino/scripts/blob/master/it.sh
 function it() {
 
-    # select available player
-    ITUNES="iTunes"
+    # select available player, preferring Swinsian over Music over iTunes
+    PLAYER="iTunes"
     if [ -d "/System/Applications/Music.app" ]; then
-        ITUNES="Music"
+        PLAYER="Music"
     fi
     if [ -d "/Applications/Swinsian.app" ]; then
-        ITUNES="Swinsian"
+        PLAYER="Swinsian"
     fi
 
     # do the things
     if [ -z "$1" ]; then
-        osascript -e "tell application \"$ITUNES\" to playpause"
+        osascript -e "tell application \"$PLAYER\" to playpause"
     elif [ "$1" = "?" ]; then
-        osascript -e "tell application \"$ITUNES\" to get name of current track"
+        osascript -e "tell application \"$PLAYER\" to get name of current track"
         printf "\033[90mby \033[0m"
-        osascript -e "tell application \"$ITUNES\" to get artist of current track"
+        osascript -e "tell application \"$PLAYER\" to get artist of current track"
         printf "\033[90mon \033[0m"
-        osascript -e "tell application \"$ITUNES\" to get album of current track"
+        osascript -e "tell application \"$PLAYER\" to get album of current track"
     elif [ "$1" = "prev" ]; then
-        osascript -e "tell application \"$ITUNES\" to play previous track"
+        osascript -e "tell application \"$PLAYER\" to play previous track"
     elif [ "$1" = "next" ]; then
-        osascript -e "tell application \"$ITUNES\" to play next track"
+        osascript -e "tell application \"$PLAYER\" to play next track"
     else
-        osascript -e "tell application \"$ITUNES\" to $1"
+        osascript -e "tell application \"$PLAYER\" to $1"
     fi
 }
 
