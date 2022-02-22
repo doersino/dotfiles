@@ -314,7 +314,7 @@ alias simonstalenhag='cd ~/Desktop; mkdir simonstalenhag; cd simonstalenhag; cur
 alias davebull='bash ~/Dropbox/code/davebull/davebull.sh'
 
 # 22:22
-alias 2222='echo "Forever (h)waiting..."; while true; do [[ $(date | tr -s " " | cut -d" " -f 4 | cut -d":" -f 1) == $(date | tr -s " " | cut -d" " -f 4 | cut -d":" -f 2) ]] && date | tr -s " " | cut -d" " -f 4 | cut -d":" -f 1,2 | say || date | tr -s " " | cut -d" " -f 4; sleep 1; done'
+alias 2222='echo "Forever (h)waiting..."; while true; do [[ $(date | tr -s " " | cut -d" " -f 4 | cut -d":" -f 1) == $(date | tr -s " " | cut -d" " -f 4 | cut -d":" -f 2) ]] && date | tr -s " " | cut -d" " -f 4 | cut -d":" -f 1,2 | say -i || date | tr -s " " | cut -d" " -f 4; sleep 1; done'
 
 # hn
 alias hn='python3 ~/Dropbox/code/scripts/hn.py'
