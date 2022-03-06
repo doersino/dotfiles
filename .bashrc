@@ -277,7 +277,6 @@ alias cdcode='cd ~/Dropbox/code/'
 alias exssh='ssh -XY ex.local'
 alias exmcs='ssh -t ex.local "screen -r mcs"'  # minecraft server, detach with ctrl + a, then d
 alias exdls='scp -rp ex.local:/home/noah/Downloads/ ~/Desktop/exdls/'
-alias exdls2='scp -rp ex.local:/home/noah/Downloads/ /Volumes/Time\ Capsule/exdls/'
 
 # raspberry pi (brachiograph)
 alias pissh='ssh pi@raspberrypi.local'
