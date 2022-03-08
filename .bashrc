@@ -292,6 +292,7 @@ alias jekyllinstall='bundle install'
 alias jekyllreinstall='rm Gemfile.lock; bundle install; bundle lock --add-platform ruby'
 alias jekyllserve='bundle exec jekyll serve'
 alias jekyllservei='bundle exec jekyll serve --incremental'
+alias exadserve='cd ~/Dropbox/code/excessivelyadequate.com; jekyllserve; cd -'
 
 # python (also see function further down)
 alias pyacti='source bin/activate'
