@@ -11,6 +11,10 @@ cp "$HOME/.gitconfig" "$DOTFILES_REPO/"
 cp "$HOME/.gitignore_global" "$DOTFILES_REPO/"
 cp "$HOME/.nanorc" "$DOTFILES_REPO/"
 
+# maestral
+mkdir -p "$DOTFILES_REPO/dropbox/"
+cp "$HOME/Dropbox/.mignore" "$DOTFILES_REPO/dropbox/"
+
 # sublime text config, package control state and package configs
 ST3_PREFIX="$HOME/Library/Application Support/Sublime Text 3/Packages/User"
 mkdir -p "$DOTFILES_REPO/sublime-text/"

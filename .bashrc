@@ -38,6 +38,9 @@ export HISTFILESIZE=""
 # ignore lines that start with a space
 export HISTCONTROL=ignoreboth
 
+# add timestamps to history and show them
+export HISTTIMEFORMAT="%F %T  "
+
 # require ctrl-D to be pressed twice, not once, in order to exit
 export IGNOREEOF=1
 
