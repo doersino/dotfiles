@@ -1,8 +1,11 @@
+# libffi is a dependency of jekyll; these are symlinks which maestral can't sync
 libffi.dylib
 libffi.la
 libffi_convenience.la
-bin/python
-bin/python3
-bin/python3.9
-bin/python3.10
-bin/python3.11
+
+# symlinks found in python venvs, would've expected to be able to specify them like "bin/python", but that doesn't work, and "python"/"python3.9" by itself would match files i want
+**/bin/python
+**/bin/python3
+**/bin/python3.9
+**/bin/python3.10
+**/bin/python3.11
