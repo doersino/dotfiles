@@ -191,6 +191,12 @@ PROMPT_COMMAND=__prompt_command
 # append to history file immediately (and not only during exit)
 PROMPT_COMMAND="$PROMPT_COMMAND; history -a"
 
+# alternate version: also load from history immediately - but that mixes the
+# history of different sessions *in* those still-active sessions, which confuses
+# me more than it helps
+#PROMPT_COMMAND="$PROMPT_COMMAND; history -a; history -n"
+
+
 
 #############
 ## ALIASES ##
@@ -255,6 +261,9 @@ alias gp='g push'
 alias gl='g log'
 alias gls='g log --pretty=oneline --abbrev-commit -n 15'  # short log
 
+# python (also see function further down)
+alias pyacti='source bin/activate'
+
 # postgres
 alias psn='psql -c "drop database scratch;"; psql -c "create database scratch;"'  # reⓃew database
 alias psf='psql -d scratch -f'                                                    # execute Ⓕile
@@ -273,8 +282,6 @@ alias jpg2mp4='ffmpeg -framerate 24 -pattern_type glob -i '"'"'*.jpg'"'"' -pix_f
 ######################
 ## PERSONAL ALIASES ##
 ######################
-
-alias cdcode='cd ~/Dropbox/code/'
 
 # old laptop
 alias exssh='ssh -XY ex.local'
@@ -296,9 +303,6 @@ alias jekyllreinstall='rm Gemfile.lock; bundle install; bundle lock --add-platfo
 alias jekyllserve='bundle exec jekyll serve'
 alias jekyllservei='bundle exec jekyll serve --incremental'
 alias exadserve='cd ~/Dropbox/code/excessivelyadequate.com; jekyllserve; cd -'
-
-# python (also see function further down)
-alias pyacti='source bin/activate'
 
 # backup
 alias backup-fonts='~/Dropbox/code/backup/backup-fonts.sh'
@@ -324,7 +328,7 @@ alias hn='python3 ~/Dropbox/code/scripts/hn.py'
 alias askhn='hn "ask hn"'
 alias showhn='hn "show hn"'
 
-# github sponsor
+# github sponsors
 alias setupgithubsponsors='mkdir ".github"; echo "github: doersino" > ".github/FUNDING.yml"; ga ".github/FUNDING.yml"; gc "Add FUNDING.yml"; git push'
 
 
