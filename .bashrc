@@ -31,7 +31,7 @@ export HISTSIZE=1000000
 # reading any configs like .bashrc). If it is unset at this point it is set to
 # the same value as HISTSIZE. Therefore we must set it to NIL, in which case it
 # isn't "unset", but doesn't have a value either, enabling us to keep an
-# essentially infite history
+# essentially infinite history
 export HISTFILESIZE=""
 
 # don't put duplicate lines in the history, ignore same sucessive entries, and
@@ -302,7 +302,7 @@ alias jekyllinstall='bundle install'
 alias jekyllreinstall='rm Gemfile.lock; bundle install; bundle lock --add-platform ruby'
 alias jekyllserve='bundle exec jekyll serve'
 alias jekyllservei='bundle exec jekyll serve --incremental'
-alias exadserve='cd ~/Dropbox/code/excessivelyadequate.com; jekyllserve; cd -'
+alias exadserve='cd ~/Dropbox/code/excessivelyadequate.com; jekyllserve --drafts; cd -'
 
 # backup
 alias backup-fonts='~/Dropbox/code/backup/backup-fonts.sh'
