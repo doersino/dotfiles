@@ -275,6 +275,7 @@ alias 2jpg='mogrify -format jpg -quality 95'
 alias png2jpg='for i in *.png; do mogrify -format jpg -quality 95 "$i" && rm "$i"; done'
 alias png2jpg90='for i in *.png; do mogrify -format jpg -quality 90 "$i" && rm "$i"; done'
 alias resize1k='mogrify -resize 1000'
+alias resize1280q90='mogrify -quality 90 -resize 1280'
 alias resize720pj='convert -resize x720 -format jpg -quality 90'  # only for single files, need to specify output filename
 alias jpg2mp4='ffmpeg -framerate 24 -pattern_type glob -i '"'"'*.jpg'"'"' -pix_fmt yuv420p out.mp4'
 
@@ -302,7 +303,7 @@ alias jekyllinstall='bundle install'
 alias jekyllreinstall='rm Gemfile.lock; bundle install; bundle lock --add-platform ruby'
 alias jekyllserve='bundle exec jekyll serve'
 alias jekyllservei='bundle exec jekyll serve --incremental'
-alias exadserve='cd ~/Dropbox/code/excessivelyadequate.com; jekyllserve --drafts; cd -'
+alias exadserve='cd ~/Dropbox/code/excessivelyadequate.com; jekyllserve --drafts --host=0.0.0.0; cd -'
 
 # backup
 alias backup-fonts='~/Dropbox/code/backup/backup-fonts.sh'
