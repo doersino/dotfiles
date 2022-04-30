@@ -17,7 +17,8 @@ PATH_PIPX="/Users/noah/.local/bin"
 PATH_PG="/Applications/Postgres.app/Contents/Versions/10/bin"  # need to change on pg updates
 PATH_SMERGE="/Applications/Sublime Merge.app/Contents/SharedSupport/bin/"
 PATH_SUBL="/Applications/Sublime Text.app/Contents/SharedSupport/bin/"
-export PATH="$PATH_NODE:$PATH_PIPX:$PATH_RUBY:$PATH:$PATH_PG:$PATH_SUBL:$PATH_SMERGE"
+PATH_SBIN="/usr/local/sbin"  # homebrew (only unbound package, it seems)
+export PATH="$PATH_NODE:$PATH_PIPX:$PATH_RUBY:$PATH_SBIN:$PATH:$PATH_PG:$PATH_SUBL:$PATH_SMERGE"
 
 
 ######################################
