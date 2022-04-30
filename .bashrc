@@ -4,7 +4,7 @@
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # required (?) for ruby in catalina or later, see https://jekyllrb.com/docs/installation/macos/
-export SDKROOT=$(xcrun --show-sdk-path)
+command -v xcrun >/dev/null 2>&1 && export SDKROOT=$(xcrun --show-sdk-path)
 
 
 ##########
