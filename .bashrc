@@ -308,7 +308,8 @@ alias exadserve='cd ~/Dropbox/code/excessivelyadequate.com; jekyllserve --drafts
 
 # backup
 alias backup-fonts='~/Dropbox/code/backup/backup-fonts.sh'
-alias backup-gists='~/Dropbox/code/backup/backup-gists.sh'
+#alias backup-gists='~/Dropbox/code/backup/backup-gists.sh'
+alias backup-photos='~/Dropbox/code/backup/backup-photos.sh'
 alias backup-tumblr='~/Dropbox/code/backup/backup-tumblr.sh'
 alias backup-uberspaces='~/Dropbox/code/backup/backup-uberspaces.sh'
 alias backup-do='~/Dropbox/code/backup/backup-do.sh'
