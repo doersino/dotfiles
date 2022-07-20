@@ -307,6 +307,7 @@ alias jekyllservei='bundle exec jekyll serve --incremental'
 alias exadserve='cd ~/Dropbox/code/excessivelyadequate.com; jekyllserve --drafts --host=0.0.0.0; cd -'
 
 # backup
+alias backup.txt='s ~/Dropbox/code/backup/backup.txt'
 alias backup-fonts='~/Dropbox/code/backup/backup-fonts.sh'
 #alias backup-gists='~/Dropbox/code/backup/backup-gists.sh'
 alias backup-photos='~/Dropbox/code/backup/backup-photos.sh'
@@ -314,6 +315,7 @@ alias backup-tumblr='~/Dropbox/code/backup/backup-tumblr.sh'
 alias backup-uberspaces='~/Dropbox/code/backup/backup-uberspaces.sh'
 alias backup-do='~/Dropbox/code/backup/backup-do.sh'
 alias backup-sync='~/Dropbox/code/backup/backup-sync.sh'
+alias backup-sync-photos='backup-sync /Volumes/one/photos_phone/2022-_iphone12mini/ /Volumes/two/photos_phone/2022-_iphone12mini/'
 
 # dotfiles
 alias commit-dotfiles='~/Dropbox/code/dotfiles/meta/commit-dotfiles'

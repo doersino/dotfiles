@@ -12,3 +12,12 @@ libffi_convenience.la
 
 # ruby bundle stuff
 #**/vendor/bundle
+
+# js stuff
+**/node_modules
+
+# my stuff
+**/aerialbot-tiles
+**/scratch.txt/update.log
+**/scratch.txt/scratch.txt
+**/scratch.txt/.git
