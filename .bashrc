@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # some zsh's witnesses are at the door, let's shut them out
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
@@ -78,8 +81,9 @@ export LC_ALL=en_US.UTF-8
 ####################
 
 # source git prompt
-if [ -e /usr/local/etc/bash_completion.d/git-prompt.sh ]; then
-    source /usr/local/etc/bash_completion.d/git-prompt.sh
+GIT_PROMPT_SH="/opt/homebrew/etc/bash_completion.d/git-prompt.sh"
+if [ -e "$GIT_PROMPT_SH" ]; then
+    source "$GIT_PROMPT_SH"
     GIT_PS1_SHOWDIRTYSTATE=1
     GIT_PS1_SHOWSTASHSTATE=1
     GIT_PS1_SHOWUNTRACKEDFILES=1
