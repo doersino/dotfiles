@@ -109,7 +109,7 @@ function __prompt_command() {
     GITPROMPTLEN=""
     if declare -f __git_ps1 > /dev/null; then
         GITPROMPT="$(__git_ps1 "(%s)")"
-        GITPROMPTLEN="$(echo "$GITPROMPT" | wc -c | xargs)"
+        GITPROMPTLEN="$(echo "$GITPROMPT" | wc -c | xargs) "
     fi
 
     # start first line
@@ -160,16 +160,18 @@ function __prompt_command() {
     # add that to prompt
     PS1+="$NEW_PWD"
 
+    # add closing bracket
+    PS1+="]"
+
     # add git prompt
-    PS1+="]\[\033[0;1m\]"
     if [ ! -z "$GITPROMPT" ]; then
-        PS1+=" $GITPROMPT"
+        PS1+=" \[\033[0;1m\]$GITPROMPT\[\033[0m\]"
         MAX_PWD_LENGTH=$((MAX_PWD_LENGTH - 1))
     fi
 
     # print right-aligned time
     PS1+="$(printf %$(($MAX_PWD_LENGTH - ${#NEW_PWD}))s)"
-    PS1+=" \[\033[1;37m\]$(date +%d.%H:%M)\[\033[0;1m\]"
+    PS1+=" \[\033[1;37m\]$(date +%d.%H:%M)\[\033[0m\]"
     PS1+="\n"
 
     # second line: show user@host in reversed color scheme if not my user on my laptop
@@ -184,7 +186,7 @@ function __prompt_command() {
     [[ -n "$VENV" ]] && PS1+="($VENV) "
 
     # $
-    PS1+="\$\[\033[0m\] "
+    PS1+="\[\033[0;1m\]\$\[\033[0m\] "
 
     # set terminal title to basename of cwd
     PS1="\e]0;\W\a""$PS1"
