@@ -16,18 +16,16 @@ mkdir -p "$DOTFILES_REPO/dropbox/"
 cp "$HOME/Dropbox/.mignore" "$DOTFILES_REPO/dropbox/"
 
 # sublime text config, package control state and package configs
-ST3_PREFIX="$HOME/Library/Application Support/Sublime Text 3/Packages/User"
+ST_PREFIX="$HOME/Library/Application Support/Sublime Text/Packages/User"
 mkdir -p "$DOTFILES_REPO/sublime-text/"
-cp "$ST3_PREFIX/Preferences.sublime-settings" "$DOTFILES_REPO/sublime-text/"
-cp "$ST3_PREFIX/Default (OSX).sublime-keymap" "$DOTFILES_REPO/sublime-text/"
-cp "$ST3_PREFIX/Package Control.sublime-settings" "$DOTFILES_REPO/sublime-text/"
-cp "$ST3_PREFIX/Color Highlight.sublime-settings" "$DOTFILES_REPO/sublime-text/"
-cp "$ST3_PREFIX/CursorRuler.sublime-settings" "$DOTFILES_REPO/sublime-text/"
-cp "$ST3_PREFIX/GitGutter.sublime-settings" "$DOTFILES_REPO/sublime-text/"
-cp "$ST3_PREFIX/StandardFormat.sublime-settings" "$DOTFILES_REPO/sublime-text/"
-cp "$ST3_PREFIX/trailing_spaces.sublime-settings" "$DOTFILES_REPO/sublime-text/"
-cp "$ST3_PREFIX/obrien.sublime-snippet" "$DOTFILES_REPO/sublime-text/"
-# cp "$ST3_PREFIX/MarkdownPreview.sublime-settings" "$DOTFILES_REPO/sublime-text/"  # purposefully excluded, this one contains a GitHub access token
+cp "$ST_PREFIX/Preferences.sublime-settings" "$DOTFILES_REPO/sublime-text/"
+cp "$ST_PREFIX/Package Control.sublime-settings" "$DOTFILES_REPO/sublime-text/"
+cp "$ST_PREFIX/Color Highlight.sublime-settings" "$DOTFILES_REPO/sublime-text/"
+cp "$ST_PREFIX/CursorRuler.sublime-settings" "$DOTFILES_REPO/sublime-text/"
+cp "$ST_PREFIX/GitGutter.sublime-settings" "$DOTFILES_REPO/sublime-text/"
+cp "$ST_PREFIX/trailing_spaces.sublime-settings" "$DOTFILES_REPO/sublime-text/"
+cp "$ST_PREFIX/obrien.sublime-snippet" "$DOTFILES_REPO/sublime-text/"
+# cp "$ST_PREFIX/MarkdownPreview.sublime-settings" "$DOTFILES_REPO/sublime-text/"  # purposefully excluded, this one contains a GitHub access token
 
 # sublime merge config
 SM_PREFIX="$HOME/Library/Application Support/Sublime Merge/Packages/User"
