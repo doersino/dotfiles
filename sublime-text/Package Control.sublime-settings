@@ -7,20 +7,15 @@
 	[
 		"Color Highlight",
 		"CursorRuler",
-		"INI",
+		"GitGutter",
 		"MarkdownPreview",
 		"Marking Changed Rows",
 		"Package Control",
-		"PEG.js",
-		"StandardFormat",
 		"SublimeLinter",
 		"SublimeLinter-annotations",
 		"SublimeLinter-php",
 		"SublimeLinter-pylint",
 		"SublimeLinter-shellcheck",
 		"TrailingSpaces",
-	],
-	"repositories":
-	[
 	],
 }

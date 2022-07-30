@@ -1,6 +1,8 @@
+// Settings in here override those in "Default/Preferences.sublime-settings",
+// and are overridden in turn by syntax-specific settings.
 {
-	"expand_merge_commits_by_default": true,
+
 	"font_face": "Iosevka",
-	"theme": "Merge.sublime-theme",
-	"side_bar_layout": "tabs"
+	"expand_merge_commits_by_default": true,
+	"side_bar_layout": "tabs",
 }
