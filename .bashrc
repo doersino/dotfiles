@@ -286,6 +286,8 @@ alias resize1280q90='mogrify -quality 90 -resize 1280'
 alias resize720pj='convert -resize x720 -format jpg -quality 90'  # only for single files, need to specify output filename
 alias jpg2mp4='ffmpeg -framerate 24 -pattern_type glob -i '"'"'*.jpg'"'"' -pix_fmt yuv420p out.mp4'
 
+# yt-dlp
+alias yt-dlp-mp4="yt-dlp -f137+140"
 
 ######################
 ## PERSONAL ALIASES ##
@@ -346,6 +348,12 @@ alias setupgithubsponsors='mkdir ".github"; echo "github: doersino" > ".github/F
 ###############
 ## FUNCTIONS ##
 ###############
+
+# perform some command-line settings on a new mac
+function newmacsettings() {
+    defaults write com.apple.Safari IncludeInternalDebugMenu 1
+    chflags hidden ~/Movies/TV
+}
 
 # mkdir and cd to the directory that was just created
 function mkcd() {
