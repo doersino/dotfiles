@@ -287,7 +287,7 @@ alias resize720pj='convert -resize x720 -format jpg -quality 90'  # only for sin
 alias jpg2mp4='ffmpeg -framerate 24 -pattern_type glob -i '"'"'*.jpg'"'"' -pix_fmt yuv420p out.mp4'
 
 # yt-dlp
-alias yt-dlp-mp4="yt-dlp -f137+140"
+alias yt-dlp-mp4="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4"
 
 ######################
 ## PERSONAL ALIASES ##

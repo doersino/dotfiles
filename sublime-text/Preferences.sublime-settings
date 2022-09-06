@@ -160,7 +160,7 @@
 	"font_face": "Iosevka",
 	"font_options":
 	[
-		"ss02"
+		"ss00"
 	],
 	"font_size": 12,
 	"highlight_line": true,
@@ -179,6 +179,7 @@
 		"Homebrew",
 		"Inkscape",
 		"Instapaper",
+		"M2",
 		"Minecraft",
 		"Morrowind",
 		"Naver",
@@ -191,6 +192,7 @@
 		"Ritter",
 		"Scriptable",
 		"Swinsian",
+		"Swinsian's",
 		"Tumblr",
 		"Ubuntu",
 		"bashrc",
