@@ -691,6 +691,27 @@ function wordle() {
     awk 'BEGIN{for(srand()srand(srand()/86400);getline<"/usr/share/dict/words";FS=_)length==5&&/^[a-z]*$/&&b[a[i++]=$0]=1;t=a[int(rand()*i)];printf">"}q=b[w=$0]{++j;for(x=i="^";++i<6;x=x".")$i="\33[4"(t~x$i?2:t~$i?3:_)"m"toupper($i)"\33[m"}q||$0="bad word";j>5||w==t{exit}{printf">"}'
 }
 
+# converting a video to the format preferred by wikimedia commons, see
+# https://commons.wikimedia.org/wiki/Help:Converting_video#Linux_and_OS_X_command_line
+function video2webm() {
+
+    # Convert video file to webm
+    # Author: Geert Van Pamel
+    # Parameters:
+    #  P1: input file name
+
+    if [[ -z "$1" ]]; then
+        echo "Input file missing"
+        exit 1
+    fi
+
+    INPUT="$1"
+    OUTPUT=$(basename "$1").webm
+
+    ffmpeg -i "$INPUT" -c:v libvpx-vp9 -b:v 0 -crf 30 -pass 1 -row-mt 1 -an -f webm -y /dev/null &&
+    ffmpeg -i "$INPUT" -c:v libvpx-vp9 -b:v 0 -crf 30 -pass 2 -row-mt 1 -c:a libopus "$OUTPUT"
+}
+
 
 ##############################
 ## OBSOLETE (but maybe not) ##
