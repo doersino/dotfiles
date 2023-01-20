@@ -30,3 +30,9 @@ libffi_convenience.la
 **/scratch.txt/update.log
 **/scratch.txt/scratch.txt
 **/scratch.txt/.git
+
+# symlinks to save space in dropbox
+# create like: ln -s /Users/noah/Dropboxn't/rarefiedpixels.com /Users/noah/Dropbox/code/rarefiedpixels.com
+#                    actual folder                             name of link
+code/rarefiedpixels.com
+code/archive/uji-works
