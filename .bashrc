@@ -648,6 +648,48 @@ function video2webm() {
     ffmpeg -i "$INPUT" -c:v libvpx-vp9 -b:v 0 -crf 30 -pass 2 -row-mt 1 -c:a libopus "$OUTPUT"
 }
 
+# adds a silent audio track to a video
+# background: my camera's slow-motion videos don't feature an audio track and
+# mastodon thus recognizes them as gifs
+function addsilentaudio() {
+    local USAGE
+    USAGE="usage: addsilentaudio INPUT_FILE"
+    if [ -z "$1" ]; then
+        echo -e "$USAGE"; return 1
+    fi
+
+    FILE="$1"
+    PATH_AND_NAME="${FILE%%.*}"
+    EXTENSION="${FILE#*.}"
+
+    ffmpeg \
+        -f lavfi  \
+        -i anullsrc=channel_layout=stereo:sample_rate=44100 \
+        -i "$FILE" \
+        -c:v copy \
+        -c:a aac \
+        -shortest \
+        "$PATH_AND_NAME-with-silent-audio.$EXTENSION"
+}
+
+function reducevideosize() {
+    local USAGE
+    USAGE="usage: reducevideosize INPUT_FILE [CRF (number between 18ish and 30ish, lower is better quality but larger, default 20)]"
+    if [ -z "$1" ]; then
+        echo -e "$USAGE"; return 1
+    fi
+
+    FILE="$1"
+    PATH_AND_NAME="${FILE%%.*}"
+
+    CRF=20
+    if [ -n "$2" ]; then
+        CRF="$2"
+    fi
+
+    ffmpeg -i "$FILE" -crf "$CRF" "$PATH_AND_NAME-crf$CRF.mp4"
+}
+
 
 ##############################
 ## OBSOLETE (but maybe not) ##
