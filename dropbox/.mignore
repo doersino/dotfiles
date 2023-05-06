@@ -31,6 +31,9 @@ libffi_convenience.la
 **/scratch.txt/scratch.txt
 **/scratch.txt/.git
 
+# davebull stuff
+**/davebull/tdh-tcd
+
 # symlinks to save space in dropbox
 # create like: ln -s /Users/noah/Dropboxn't/rarefiedpixels.com /Users/noah/Dropbox/code/rarefiedpixels.com
 #                    actual folder                             name of link
