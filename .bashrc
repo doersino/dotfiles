@@ -279,8 +279,8 @@ alias psr='psql -d scratch'                                                     
 # image operations, based on imagemagick and ffmpeg
 alias 2png='mogrify -format png'
 alias 2jpg='mogrify -format jpg -quality 95'
-alias png2jpg='for i in *.png; do mogrify -format jpg -quality 95 "$i" && rm "$i"; done'
-alias png2jpg90='for i in *.png; do mogrify -format jpg -quality 90 "$i" && rm "$i"; done'
+#alias png2jpg='for i in *.png; do mogrify -format jpg -quality 95 "$i" && rm "$i"; done'
+#alias png2jpg90='for i in *.png; do mogrify -format jpg -quality 90 "$i" && rm "$i"; done'
 alias resize1k='mogrify -resize 1000'
 alias resize1280q90='mogrify -quality 90 -resize 1280'
 alias resize720pj='convert -resize x720 -format jpg -quality 90'  # only for single files, need to specify output filename
@@ -479,6 +479,44 @@ function unheic() {
         NO_EXT="${FILE%.*}"
         echo "$NO_EXT"
         sips -s format jpeg "$FILE" --out "$NO_EXT".jpg
+        if [ $REPLACE == true ]; then
+            rm "$FILE"
+        fi
+    done
+}
+
+# create a jpeg version of one or multiple png files (which can be located in
+# different directories; each conversion result ends up "next to" its respective
+# original or replaces it if the --replace flag is set)
+function png2jpg() {
+    local USAGE
+    USAGE="usage: unheic [--replace] [--quality n] FILES"
+
+    REPLACE=false
+    QUALITY=90
+
+    if [ "$1" == "--replace" ]; then
+        REPLACE=true
+        shift
+    fi
+
+    if [ "$1" == "--quality" ]; then
+        QUALITY="$2"
+        shift
+        shift
+    fi
+
+    if [ "$1" == "--replace" ]; then
+        REPLACE=true
+        shift
+    fi
+
+    if [ -z "$1" ]; then
+        echo -e "$USAGE"; return 1
+    fi
+
+    for FILE in "$@"; do
+        mogrify -format jpg -quality "$QUALITY" "$FILE"
         if [ $REPLACE == true ]; then
             rm "$FILE"
         fi
