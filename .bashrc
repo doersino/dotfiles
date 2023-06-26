@@ -285,6 +285,7 @@ alias resize1k='mogrify -resize 1000'
 alias resize1280q90='mogrify -quality 90 -resize 1280'
 alias resize720pj='convert -resize x720 -format jpg -quality 90'  # only for single files, need to specify output filename
 alias jpg2mp4='ffmpeg -framerate 24 -pattern_type glob -i '"'"'*.jpg'"'"' -pix_fmt yuv420p out.mp4'
+alias adobe-dng-converter='/Applications/Adobe\ DNG\ Converter.app/Contents/MacOS/Adobe\ DNG\ Converter'
 
 # yt-dlp
 alias yt-dlp-mp4="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4"
