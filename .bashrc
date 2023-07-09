@@ -236,8 +236,6 @@ alias space2_='for i in *; do [[ $i == *" "* ]] && mv "$i" ${i// /_}; done'
 # ulitities
 alias s='subl'
 alias sm='smerge .'
-alias ytdl='yt-dlp'
-alias youtube-dl='ytdl'
 alias grep='grep --color=auto'     # highlight search phrase
 alias timestamp='date +%s'
 alias recentlymodified='find . -type f -print0 | xargs -0 gstat --format "%Y :%y %n" | sort -nr | cut -d: -f2- | head'  # accepts e.g. "-n 50" argument
@@ -288,7 +286,10 @@ alias jpg2mp4='ffmpeg -framerate 24 -pattern_type glob -i '"'"'*.jpg'"'"' -pix_f
 alias adobe-dng-converter='/Applications/Adobe\ DNG\ Converter.app/Contents/MacOS/Adobe\ DNG\ Converter'
 
 # yt-dlp
+alias ytdl='yt-dlp'
+alias youtube-dl='ytdl'
 alias yt-dlp-mp4="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4"
+alias yt-dlp-mp3="yt-dlp -x --audio-format mp3 --audio-quality 0"
 
 ######################
 ## PERSONAL ALIASES ##
