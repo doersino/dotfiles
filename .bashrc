@@ -15,7 +15,7 @@ command -v xcrun >/dev/null 2>&1 && export SDKROOT=$(xcrun --show-sdk-path)
 ##########
 
 PATH_NODE="./node_modules/.bin"
-PATH_RUBY="/Users/noah/.gem/ruby/2.6.0/bin"  # need to change on ruby updates (i.e. macos updates)
+PATH_RUBY="/opt/homebrew/opt/ruby/bin"  # need to change on ruby updates (i.e. macos updates)
 PATH_PIPX="/Users/noah/.local/bin"
 PATH_PG="/Applications/Postgres.app/Contents/Versions/14/bin"  # need to change on pg updates
 PATH_SMERGE="/Applications/Sublime Merge.app/Contents/SharedSupport/bin/"
@@ -351,10 +351,15 @@ alias setupgithubsponsors='mkdir ".github"; echo "github: doersino" > ".github/F
 ## FUNCTIONS ##
 ###############
 
+# macos notifications
+function notify() {
+    osascript -e "display notification \"$1\""
+}
+
 # perform some command-line settings on a new mac
 function newmacsettings() {
     defaults write com.apple.Safari IncludeInternalDebugMenu 1
-    chflags hidden ~/Movies/TV
+    chflags hidden ~/Movies/TV  # hide this directory
 }
 
 # mkdir and cd to the directory that was just created
