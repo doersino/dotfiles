@@ -359,7 +359,14 @@ function notify() {
 # perform some command-line settings on a new mac
 function newmacsettings() {
     defaults write com.apple.Safari IncludeInternalDebugMenu 1
-    chflags hidden ~/Movies/TV  # hide this directory
+
+    # hide these directories
+    chflags hidden ~/Movies/"TV"
+    chflags hidden ~/Movies/"iMovie Library.imovielibrary"
+    chflags hidden ~/Movies/"iMovie Theater.theater"
+    chflags hidden ~/Movies/"Motion Templates.localized"
+    chflags hidden ~/Pictures/"Photo Booth Library"
+    chflags hidden ~/Pictures/"Photos Library.photoslibrary"
 }
 
 # mkdir and cd to the directory that was just created
