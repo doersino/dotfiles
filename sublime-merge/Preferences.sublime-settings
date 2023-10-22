@@ -5,4 +5,5 @@
 	"font_face": "Iosevka",
 	"expand_merge_commits_by_default": true,
 	"side_bar_layout": "tabs",
+	"theme": "Merge.sublime-theme",
 }

@@ -10,6 +10,9 @@ libffi_convenience.la
 **/bin/python3.10
 **/bin/python3.11
 **/bin/python3.12
+**/bin/python3.13
+**/bin/python3.14
+**/bin/python3.15
 
 # other python venv stuff
 **/lib/python
@@ -18,6 +21,9 @@ libffi_convenience.la
 **/lib/python3.10
 **/lib/python3.11
 **/lib/python3.12
+**/lib/python3.13
+**/lib/python3.14
+**/lib/python3.15
 
 # ruby bundler stuff
 **/vendor/bundle
@@ -33,6 +39,9 @@ libffi_convenience.la
 
 # davebull stuff
 **/davebull/tdh-tcd
+
+# backup stuff
+**/backup/osxphotos
 
 # symlinks to save space in dropbox
 # create like: ln -s /Users/noah/Dropboxn't/rarefiedpixels.com /Users/noah/Dropbox/code/rarefiedpixels.com
