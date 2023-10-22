@@ -343,9 +343,6 @@ alias hn='python3 ~/Dropbox/code/scripts/hn.py'
 alias askhn='hn "ask hn"'
 alias showhn='hn "show hn"'
 
-# github sponsors
-alias setupgithubsponsors='mkdir ".github"; echo "github: doersino" > ".github/FUNDING.yml"; ga ".github/FUNDING.yml"; gc "Add FUNDING.yml"; git push'
-
 
 ###############
 ## FUNCTIONS ##
@@ -356,7 +353,7 @@ function notify() {
     osascript -e "display notification \"$1\""
 }
 
-# perform some command-line settings on a new mac
+# perform some command-line settings on a new mac (run during initial setup)
 function newmacsettings() {
     defaults write com.apple.Safari IncludeInternalDebugMenu 1
 
@@ -367,6 +364,9 @@ function newmacsettings() {
     chflags hidden ~/Movies/"Motion Templates.localized"
     chflags hidden ~/Pictures/"Photo Booth Library"
     chflags hidden ~/Pictures/"Photos Library.photoslibrary"
+
+    # install crontab
+    crontab ~/Dropbox/code/crontab/crontab.txt
 }
 
 # mkdir and cd to the directory that was just created
