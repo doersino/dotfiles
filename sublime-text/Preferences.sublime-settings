@@ -170,6 +170,7 @@
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
+		"Package Control",
 		"Vintage",
 	],
 	"ignored_words":
@@ -227,8 +228,9 @@
 	"open_files_in_new_window": false,
 	"rulers":
 	[
-		80
+		[80, "stippled", 1]
 	],
+	"ruler_width": 0.5,
 	"scroll_past_end": true,
 	"show_full_path": true,
 	"tab_completion": false,
