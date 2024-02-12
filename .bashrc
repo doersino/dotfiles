@@ -357,6 +357,13 @@ function notify() {
 function newmacsettings() {
     defaults write com.apple.Safari IncludeInternalDebugMenu 1
 
+    # reduce menu bar spacing just ever-so-slightly (requires re-login)
+    # via https://flaky.build/native-fix-for-applications-hiding-under-the-macbook-pro-notch
+    defaults -currentHost write -globalDomain NSStatusItemSelectionPadding -int 8
+    defaults -currentHost write -globalDomain NSStatusItemSpacing -int 12
+    #defaults -currentHost delete -globalDomain NSStatusItemSelectionPadding
+    #defaults -currentHost delete -globalDomain NSStatusItemSpacing
+
     # hide these directories
     chflags hidden ~/Movies/"TV"
     chflags hidden ~/Movies/"iMovie Library.imovielibrary"
