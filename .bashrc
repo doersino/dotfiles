@@ -765,7 +765,7 @@ function namephotoswithdate() {
 
     # rename each *.{RAF,MOV,jpg}
     shopt -s nullglob
-    for FILE in *.{RAF,MOV,jpg}; do
+    for FILE in *.{RAF,MOV,jpg,pxd}; do
         MODIFIED=$(date -r "$FILE" +'%Y-%m-%d')
         NEWFILE=$(echo $FILE | perl -lape 's/^(.*)(DSCF\d+)_?(.*)$/$1$2_'"$MODIFIED"'_$3/g')
         echo "mv $FILE $NEWFILE"
