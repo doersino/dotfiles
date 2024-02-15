@@ -766,6 +766,14 @@ function namephotoswithdate() {
     # rename each *.{RAF,MOV,jpg}
     shopt -s nullglob
     for FILE in *.{RAF,MOV,jpg,pxd}; do
+
+        # skip already-renamed files => idempotence
+        if [[ $FILE =~ "_20" ]]; then
+            echo "# skipping $FILE (already renamed)"
+            continue
+        fi
+
+        # otherwise, put together new file name and mv
         MODIFIED=$(date -r "$FILE" +'%Y-%m-%d')
         NEWFILE=$(echo $FILE | perl -lape 's/^(.*)(DSCF\d+)_?(.*)$/$1$2_'"$MODIFIED"'_$3/g')
         echo "mv $FILE $NEWFILE"
@@ -776,7 +784,7 @@ function namephotoswithdate() {
     # go back to previous directory
     if [[ ! -z "$1" ]] && [[ -d "$1" ]]; then
         echo "cd -"
-        cd -
+        cd - >/dev/null  # suppress output
     fi
 }
 
