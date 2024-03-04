@@ -788,6 +788,44 @@ function namephotoswithdate() {
     fi
 }
 
+# really specific utility for extracting the date from gpx walk recordings at
+# the root level of my dropbox, prefixing it to the filenames, then moving the
+# resulting files to the "walks" subdirectory
+function prefixgpxindropboxwithdateandfileaway() {
+    echo "cd ~/Dropbox"
+    cd ~/Dropbox
+
+    # rename each *.gpx
+    shopt -s nullglob
+    for FILE in *.gpx; do
+
+        # skip already-renamed files => idempotence
+        if [[ $FILE =~ ^20.* ]]; then
+            echo "# skipping $FILE (already renamed)"
+            continue
+        fi
+
+        # extract date really awkwardly because quick-and-dirty:
+        # - extract lines containting time tags via perl
+        #   via https://stackoverflow.com/a/25392098
+        # - then cut date out of them
+        # - then using head and tail, take the second date found in the file
+        #   (the first is, in my case, the export timestamp)
+        DATE=$(perl -wln -e 'print if /\btime\b/' "$FILE" | cut -d'>' -f2 | cut -dT -f1 | head -n 2 | tail -n 1)
+        NEWFILE="${DATE}_$FILE"
+        echo "mv $FILE walks/$NEWFILE"
+        \mv "$FILE" "walks/$NEWFILE"
+    done
+    shopt -u nullglob
+
+    # go back to previous directory
+    if [[ ! -z "$1" ]] && [[ -d "$1" ]]; then
+        echo "cd -"
+        cd - >/dev/null  # suppress output
+    fi
+}
+
+
 ##############################
 ## OBSOLETE (but maybe not) ##
 ##############################
