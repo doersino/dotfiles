@@ -20,8 +20,7 @@ PATH_PIPX="/Users/noah/.local/bin"
 PATH_PG="/Applications/Postgres.app/Contents/Versions/15/bin"  # need to change on pg updates
 PATH_SMERGE="/Applications/Sublime Merge.app/Contents/SharedSupport/bin/"
 PATH_SUBL="/Applications/Sublime Text.app/Contents/SharedSupport/bin/"
-PATH_SBIN="/usr/local/sbin"  # homebrew (only unbound package, it seems)
-export PATH="$PATH_NODE:$PATH_PIPX:$PATH_RUBY:$PATH_SBIN:$PATH:$PATH_PG:$PATH_SUBL:$PATH_SMERGE"
+export PATH="$PATH_NODE:$PATH_PIPX:$PATH_RUBY:$PATH:$PATH_PG:$PATH_SMERGE:$PATH_SUBL"
 
 
 ######################################
@@ -286,8 +285,7 @@ alias jpg2mp4='ffmpeg -framerate 24 -pattern_type glob -i '"'"'*.jpg'"'"' -pix_f
 alias adobe-dng-converter='/Applications/Adobe\ DNG\ Converter.app/Contents/MacOS/Adobe\ DNG\ Converter'
 
 # yt-dlp
-alias ytdl='yt-dlp'
-alias youtube-dl='ytdl'
+alias youtube-dl='yt-dlp'
 alias yt-dlp-mp4="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4"
 alias yt-dlp-mp3="yt-dlp -x --audio-format mp3 --audio-quality 0"
 
@@ -317,13 +315,12 @@ alias jekyllservei='bundle exec jekyll serve --incremental'
 alias exadserve='cd ~/Dropbox/code/excessivelyadequate.com; jekyllserve --drafts --host=0.0.0.0; cd -'
 
 # backup
-alias backup.txt='s ~/Dropbox/code/backup/backup.txt'
+alias backup-do='~/Dropbox/code/backup/backup-do.sh'
 alias backup-fonts='~/Dropbox/code/backup/backup-fonts.sh'
 #alias backup-gists='~/Dropbox/code/backup/backup-gists.sh'
 alias backup-photos='~/Dropbox/code/backup/backup-photos.sh'
 alias backup-tumblr='~/Dropbox/code/backup/backup-tumblr.sh'
 alias backup-uberspaces='~/Dropbox/code/backup/backup-uberspaces.sh'
-alias backup-do='~/Dropbox/code/backup/backup-do.sh'
 alias backup-sync='~/Dropbox/code/backup/backup-sync.sh'
 alias backup-sync-photos='backup-sync /Volumes/one/photos_phone/2022-_iphone12mini/ /Volumes/two/photos_phone/2022-_iphone12mini/'
 
@@ -332,8 +329,8 @@ alias commit-dotfiles='~/Dropbox/code/dotfiles/meta/commit-dotfiles'
 alias commit-bashrc='~/Dropbox/code/dotfiles/meta/commit-bashrc'
 
 # downloads
-alias simonstalenhag='cd ~/Desktop; mkdir simonstalenhag; cd simonstalenhag; curl http://www.simonstalenhag.se | grep bilderbig | cut -d"\"" -f2 | sed "s,//,/,g" | uniq | sed -e "s/^/http:\/\/www.simonstalenhag.se\//" | xargs wget'
 alias davebull='bash ~/Dropbox/code/davebull/davebull.sh'
+alias simonstalenhag='cd ~/Desktop; mkdir simonstalenhag; cd simonstalenhag; curl http://www.simonstalenhag.se | grep bilderbig | cut -d"\"" -f2 | sed "s,//,/,g" | uniq | sed -e "s/^/http:\/\/www.simonstalenhag.se\//" | xargs wget'
 
 # 22:22
 alias 2222='echo "Forever (h)waiting..."; while true; do [[ $(date | tr -s " " | cut -d" " -f 4 | cut -d":" -f 1) == $(date | tr -s " " | cut -d" " -f 4 | cut -d":" -f 2) ]] && date | tr -s " " | cut -d" " -f 4 | cut -d":" -f 1,2 | say -i || date | tr -s " " | cut -d" " -f 4; sleep 1; done'
@@ -359,8 +356,8 @@ function newmacsettings() {
 
     # reduce menu bar spacing just ever-so-slightly (requires re-login)
     # via https://flaky.build/native-fix-for-applications-hiding-under-the-macbook-pro-notch
-    defaults -currentHost write -globalDomain NSStatusItemSelectionPadding -int 8
-    defaults -currentHost write -globalDomain NSStatusItemSpacing -int 12
+    defaults -currentHost write -globalDomain NSStatusItemSelectionPadding -int 7
+    defaults -currentHost write -globalDomain NSStatusItemSpacing -int 11
     #defaults -currentHost delete -globalDomain NSStatusItemSelectionPadding
     #defaults -currentHost delete -globalDomain NSStatusItemSpacing
 
@@ -553,44 +550,6 @@ function pyserve() {
     python3 -m http.server "$PORT"
 }
 
-# post a predefined point on @earthacrosstime
-function earthacrosstime() {
-    local USAGE
-    USAGE="usage: earthacrosstime 'LAT,LON' MAX_METERS_PER_PIXEL"
-    if [ -z "$2" ]; then
-        echo -e "$USAGE"; return 1
-    fi
-
-    POINT="$1"
-    MMPP="$2"  # roughly: below 16 => zoom 12, below 32 => zoom 11, etc.
-    leakyssh "/usr/bin/env bash -c 'cd /home/leakyabs/earthacrosstime && source bin/activate && python3 earthacrosstime.py -p=\"$POINT\" -m $MMPP'"
-}
-
-# similarly, post a predefined point on @placesfromorbit (any further arguments will be ignored, which is handy for comments)
-function placesfromorbit() {
-    local USAGE
-    USAGE="usage: placesfromorbit 'LAT,LON'"
-    if [ -z "$1" ]; then
-        echo -e "$USAGE"; return 1
-    fi
-
-    POINT="$1"
-    leakyssh "/usr/bin/env bash -c 'cd /home/leakyabs/aerialbot && source bin/activate && python3 aerialbot.py config-placesfromorbit.ini -p=\"$POINT\"'"
-}
-
-# ...and the same for @citiesatanangle (here, the first argument is the view direction)
-function citiesatanangle() {
-    local USAGE
-    USAGE="usage: placesfromorbit DIRECTION 'LAT,LON'"
-    if [ -z "$2" ]; then
-        echo -e "$USAGE"; return 1
-    fi
-
-    DIRECTION="$1"
-    POINT="$2"
-    leakyssh "/usr/bin/env bash -c 'cd /home/leakyabs/aerialbot && source bin/activate && python3 aerialbot.py config-citiesatanangle.ini -p=\"$POINT\" --direction \"$DIRECTION\"'"
-}
-
 # resets a python virtual environment, frequently needed after homebrew installs
 # a new python version during the course of other upgrades, can also be used to
 # create a new environment
@@ -728,10 +687,11 @@ function addsilentaudio() {
         -c:v copy \
         -c:a aac \
         -shortest \
-        "$PATH_AND_NAME-with-silent-audio.$EXTENSION"
+        "$PATH_AND_NAME-with-silent-audio.$EXTENSION"  # needs to match (*)
 }
 
 # reduce video size, optionally takes crf as arg
+# (also adds silent audio track if no audio present)
 function reducevideosize() {
     local USAGE
     USAGE="usage: reducevideosize INPUT_FILE [CRF (number between 18ish and 30ish, lower is better quality but larger, default 20)]"
@@ -739,18 +699,36 @@ function reducevideosize() {
         echo -e "$USAGE"; return 1
     fi
 
-    FILE="$1"
-    PATH_AND_NAME="${FILE%%.*}"
-
     CRF=20
     if [ -n "$2" ]; then
         CRF="$2"
     fi
 
+    FILE="$1"
+    PATH_AND_NAME="${FILE%%.*}"
+    EXTENSION="${FILE#*.}"
+
+    AUDIO_INFO="$(ffprobe -i $FILE -show_streams -select_streams a -loglevel error)"
+    if [ -z "$AUDIO_INFO" ]; then
+        addsilentaudio "$FILE"
+        FILE="$PATH_AND_NAME-with-silent-audio.$EXTENSION"  # needs to match (*)
+        PATH_AND_NAME="${FILE%%.*}"
+        EXTENSION="${FILE#*.}"
+    fi
+
     ffmpeg -i "$FILE" -crf "$CRF" "$PATH_AND_NAME-crf$CRF.mp4"
 }
+function reducevideosize23() {
+    reducevideosize $1 23
+}
+function reducevideosize26() {
+    reducevideosize $1 26
+}
+function reducevideosize29() {
+    reducevideosize $1 29
+}
 
-# normalize photo/video names generated by my camera, run in a directory
+# "normalize" photo/video names generated by my camera, run in a directory
 # containing .RAF/.MOV files, will replace e.g. "DSCF5982_merganser.RAF" to
 # "DSCF5982_2024-02-20_merganser.RAF" (that date is the file modification date)
 # or "DSCF5982.RAF" to "DSCF5982_2024-02-20_.RAF" (trailing _ is intended),
@@ -905,3 +883,41 @@ export -f unavi
 alias unavi_all_imgp='find . -name '"'"'IMGP*.AVI'"'"' -print0 | xargs -0 bash -c '"'"'unavi "$@" </dev/tty'"'"' _'
 alias unavi_all_imgp_size_before='find . -type f -name 'IMGP*.AVI' -exec du -ch {} + | grep total$'
 alias unavi_all_imgp_size_after='find . -type f -name 'IMGP*.mp4' -exec du -ch {} + | grep total$'
+
+# post a predefined point on @earthacrosstime
+function earthacrosstime() {
+    local USAGE
+    USAGE="usage: earthacrosstime 'LAT,LON' MAX_METERS_PER_PIXEL"
+    if [ -z "$2" ]; then
+        echo -e "$USAGE"; return 1
+    fi
+
+    POINT="$1"
+    MMPP="$2"  # roughly: below 16 => zoom 12, below 32 => zoom 11, etc.
+    leakyssh "/usr/bin/env bash -c 'cd /home/leakyabs/earthacrosstime && source bin/activate && python3 earthacrosstime.py -p=\"$POINT\" -m $MMPP'"
+}
+
+# similarly, post a predefined point on @placesfromorbit (any further arguments will be ignored, which is handy for comments)
+function placesfromorbit() {
+    local USAGE
+    USAGE="usage: placesfromorbit 'LAT,LON'"
+    if [ -z "$1" ]; then
+        echo -e "$USAGE"; return 1
+    fi
+
+    POINT="$1"
+    leakyssh "/usr/bin/env bash -c 'cd /home/leakyabs/aerialbot && source bin/activate && python3 aerialbot.py config-placesfromorbit.ini -p=\"$POINT\"'"
+}
+
+# ...and the same for @citiesatanangle (here, the first argument is the view direction)
+function citiesatanangle() {
+    local USAGE
+    USAGE="usage: placesfromorbit DIRECTION 'LAT,LON'"
+    if [ -z "$2" ]; then
+        echo -e "$USAGE"; return 1
+    fi
+
+    DIRECTION="$1"
+    POINT="$2"
+    leakyssh "/usr/bin/env bash -c 'cd /home/leakyabs/aerialbot && source bin/activate && python3 aerialbot.py config-citiesatanangle.ini -p=\"$POINT\" --direction \"$DIRECTION\"'"
+}
