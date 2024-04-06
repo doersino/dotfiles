@@ -42,6 +42,7 @@ libffi_convenience.la
 
 # backup stuff
 **/backup/osxphotos
+.documents.tar.gz.bin-password
 
 # symlinks to save space in dropbox
 # create like: ln -s /Users/noah/Dropboxn't/rarefiedpixels.com /Users/noah/Dropbox/code/rarefiedpixels.com

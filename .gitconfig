@@ -14,5 +14,8 @@
 	helper = osxkeychain
 [diff]
 	noprefix = true
+	algorithm = histogram
 [pull]
 	ff = only
+[log]
+	date = iso
