@@ -13,6 +13,9 @@ libffi_convenience.la
 **/bin/python3.13
 **/bin/python3.14
 **/bin/python3.15
+**/bin/python3.16
+**/bin/python3.17
+**/bin/python3.18
 
 # other python venv stuff
 **/lib/python
@@ -24,12 +27,18 @@ libffi_convenience.la
 **/lib/python3.13
 **/lib/python3.14
 **/lib/python3.15
+**/lib/python3.16
+**/lib/python3.17
+**/lib/python3.18
 
 # ruby bundler stuff
 **/vendor/bundle
 
 # js stuff
 **/node_modules
+
+# temporarily-built jekyll and nyum sites
+**/_site
 
 # my stuff
 **/aerialbot-tiles

@@ -398,7 +398,7 @@ function vol() {
     OLD_VOLUME="$(osascript -e "output volume of (get volume settings)")"
 
     if [ -z "$1" ]; then
-        echo "$OLD_VOLUME"
+        echo "$OLD_VOLUME %"
     else
         # default case: just set volume to specified value
         NEW_VOLUME="$1"
@@ -421,7 +421,7 @@ function vol() {
         if [ "$NEW_VOLUME" -eq 0 ]; then
             MUTED="(muted)"
         fi
-        echo "$OLD_VOLUME -> $NEW_VOLUME $MUTED"
+        echo "$OLD_VOLUME % -> $NEW_VOLUME % $MUTED"
 
         # set
         osascript -e "set volume output volume $NEW_VOLUME"
@@ -560,14 +560,14 @@ function resetpythonvenv() {
     else
         echo "No venv active, skipped 'deactivate' step."
     fi
-    if [ -d "bin" ]; then
+    if [ -f "pyvenv.cfg" ]; then
         echo "Nuking old virtual environment..."
+        rm pyvenv.cfg
         rm -r bin
         rm -r include
         rm -r lib
-        rm pyvenv.cfg
     else
-        echo "No 'bin' directory present, skipped nuking step."
+        echo "No 'pyvenv.cfg' file present, skipped nuking step."
     fi
     echo "Setting up a fresh virtual environment..."
     python3 -m venv .
@@ -622,7 +622,6 @@ function gifmemore() {
     fi
     convert -delay "$DELAY" -loop 0 -dispose previous "$@" out.gif
 }
-
 
 # compresses a pdf quite dramatically without apparent loss of quality (but may
 # degrade searchability and compatibility, also takes a while)
