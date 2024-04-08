@@ -289,6 +289,9 @@ alias youtube-dl='yt-dlp'
 alias yt-dlp-mp4="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4"
 alias yt-dlp-mp3="yt-dlp -x --audio-format mp3 --audio-quality 0"
 
+# mail (cron job reports)
+alias nukemail='echo '"'"'delete *'"'"' | mail; mail'
+
 ######################
 ## PERSONAL ALIASES ##
 ######################
