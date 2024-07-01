@@ -239,6 +239,7 @@ alias grep='grep --color=auto'     # highlight search phrase
 alias timestamp='date +%s'
 alias recentlymodified='find . -type f -print0 | xargs -0 gstat --format "%Y :%y %n" | sort -nr | cut -d: -f2- | head'  # accepts e.g. "-n 50" argument
 alias pingg='prettyping --nolegend -i 0.1 google.com'
+alias pinggg='while true; do date; pingg -c 600; sleep 10; done'
 alias ip='curl ipinfo.io/ip; echo' # "echo" to generate a newline
 alias duls='du -h -d1 | sort -r'   # list disk usage statistics for the current folder, via https://github.com/jez/dotfiles/blob/master/util/aliases.sh
 alias up='uptime'                  # drop the "time". just "up". it's cleaner.
@@ -364,7 +365,7 @@ function newmacsettings() {
     #defaults -currentHost delete -globalDomain NSStatusItemSelectionPadding
     #defaults -currentHost delete -globalDomain NSStatusItemSpacing
 
-    # hide these directories
+    # hide these directories (rest with "nohidden")
     chflags hidden ~/Movies/"TV"
     chflags hidden ~/Movies/"iMovie Library.imovielibrary"
     chflags hidden ~/Movies/"iMovie Theater.theater"
