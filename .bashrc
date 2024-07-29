@@ -251,6 +251,7 @@ alias rmdsstore="find . -name '*.DS_Store' -type f -delete"  # recursive!
 alias brewdeps='echo "Listing all installed homebrew packages along with packages that depend on them:"; brew list -1 | while read cask; do echo -ne "\x1B[1;34m$cask \x1B[0m"; brew uses $cask --installed | awk '"'"'{printf(" %s ", $0)}'"'"'; echo ""; done'  # via https://www.thingy-ma-jig.co.uk/blog/22-09-2014/homebrew-list-packages-and-what-uses-them
 alias highlight='pygmentize -f terminal'   # syntax highlighting
 alias extensions="find . -type f | perl -ne 'print $1 if m/\.([^.\/]+)$/' | sort -u"  # via https://stackoverflow.com/a/1842270
+alias countfilesinsubdirectories="du -a | sed '/.*\.\/.*\/.*/!d' | cut -d/ -f2 | sort | uniq -c | sort -nr"  # via https://stackoverflow.com/a/39622947
 alias jsonp='json_pp -f json -t json -json_opt pretty,utf8,allow_bignum'
 alias bashrc='s ~/.bashrc'
 alias refresh-bashrc='source ~/.bashrc'
@@ -331,6 +332,8 @@ alias backup-sync-photos='backup-sync /Volumes/one/photos_phone/2022-_iphone12mi
 # dotfiles
 alias commit-dotfiles='~/Dropbox/code/dotfiles/meta/commit-dotfiles'
 alias commit-bashrc='~/Dropbox/code/dotfiles/meta/commit-bashrc'
+
+alias commit-moneymoney-extensions='~/Dropbox/code/moneymoney-extensions/meta/commit-moneymoney-extensions'
 
 # downloads
 alias davebull='bash ~/Dropbox/code/davebull/davebull.sh'
