@@ -220,6 +220,9 @@ alias tree='tree -CF'
 alias treel='tree -phD --du'
 alias treea='treel -a'
 
+# cd
+alias cdf='cd "$(osascript -e '\''tell application "Finder" to return POSIX path of (target of front Finder window as alias)'\'')"'  # via https://leancrew.com/all-this/2024/09/improved-finder-terminal-tools/
+
 # file operations
 alias cp='cp -iPRv'
 alias mv='mv -iv'
