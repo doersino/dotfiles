@@ -372,7 +372,7 @@ function newmacsettings() {
     #defaults -currentHost delete -globalDomain NSStatusItemSelectionPadding
     #defaults -currentHost delete -globalDomain NSStatusItemSpacing
 
-    # hide these directories (rest with "nohidden")
+    # hide these directories (reset with "nohidden")
     chflags hidden ~/Movies/"TV"
     chflags hidden ~/Movies/"iMovie Library.imovielibrary"
     chflags hidden ~/Movies/"iMovie Theater.theater"
