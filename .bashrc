@@ -221,6 +221,7 @@ alias treel='tree -phD --du'
 alias treea='treel -a'
 
 # cd
+alias cd..='cd ..'
 alias cdf='cd "$(osascript -e '\''tell application "Finder" to return POSIX path of (target of front Finder window as alias)'\'')"'  # via https://leancrew.com/all-this/2024/09/improved-finder-terminal-tools/
 
 # file operations
@@ -805,6 +806,41 @@ function prefixgpxindropboxwithdateandfileaway() {
     fi
 }
 
+function dateprefix() {
+    for FILE in "$@"; do
+
+        # skip already-renamed files => idempotence
+        REGEX='[0-9]{4}-[0-9]{2}-[0-9]{2}_'
+        if [[ $FILE =~ $REGEX ]]; then
+            echo "# skipping $FILE (already renamed)"
+            continue
+        fi
+
+        # otherwise, put together new file name and mv
+        DATENOW=$(date +'%Y-%m-%d')
+        NEWFILE="${DATENOW}_$FILE"  # https://stackoverflow.com/a/75222340
+        echo "mv $FILE $NEWFILE"
+        \mv "$FILE" "$NEWFILE"
+    done
+}
+function datesuffix() {
+    for FILE in "$@"; do
+
+        # skip already-renamed files => idempotence
+        REGEX='_[0-9]{4}-[0-9]{2}-[0-9]{2}'
+        if [[ $FILE =~ $REGEX ]]; then
+            echo "# skipping $FILE (already renamed)"
+            continue
+        fi
+
+        # otherwise, put together new file name and mv
+        DATENOW=$(date +'%Y-%m-%d')
+        NEWFILE="${FILE%%.*}_${DATENOW}.${FILE#*.}"  # https://stackoverflow.com/a/75222340
+        echo "mv $FILE $NEWFILE"
+        \mv "$FILE" "$NEWFILE"
+    done
+}
+
 
 ##############################
 ## OBSOLETE (but maybe not) ##
@@ -881,7 +917,7 @@ function unavi() {
 # the conversion progress on the current file, everything that's already
 # converted persists, and nothing gets converted twice or deleted before
 # successful conversion (i think and hope)
-export -f unavi
+#export -f unavi
 alias unavi_all_imgp='find . -name '"'"'IMGP*.AVI'"'"' -print0 | xargs -0 bash -c '"'"'unavi "$@" </dev/tty'"'"' _'
 alias unavi_all_imgp_size_before='find . -type f -name 'IMGP*.AVI' -exec du -ch {} + | grep total$'
 alias unavi_all_imgp_size_after='find . -type f -name 'IMGP*.mp4' -exec du -ch {} + | grep total$'
