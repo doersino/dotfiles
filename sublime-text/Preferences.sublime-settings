@@ -202,7 +202,6 @@
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
-		"Package Control",
 		"Vintage",
 	],
 	"ignored_words":
@@ -298,4 +297,5 @@
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": false,
 	"auto_match_enabled": false,
+	"index_files": true,
 }

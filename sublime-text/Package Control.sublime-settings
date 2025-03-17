@@ -2,7 +2,6 @@
 	"bootstrapped": true,
 	"in_process_packages":
 	[
-		"Package Control",
 	],
 	"installed_packages":
 	[
@@ -18,6 +17,8 @@
 		"SublimeLinter-php",
 		"SublimeLinter-pylint",
 		"SublimeLinter-shellcheck",
+		"Svelte",
+		"Terraform",
 		"TrailingSpaces",
 	],
 }

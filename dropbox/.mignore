@@ -54,7 +54,7 @@ libffi_convenience.la
 .documents.tar.gz.bin-password
 
 # symlinks to save space in dropbox
-# create like: ln -s /Users/noah/Dropboxn't/rarefiedpixels.com /Users/noah/Dropbox/code/rarefiedpixels.com
-#                    actual folder                             name of link
+# create like: ln -s /Users/noah/Dropboxn't/code/rarefiedpixels.com /Users/noah/Dropbox/code/rarefiedpixels.com
+#                    actual folder                                  name of link
 code/rarefiedpixels.com
 code/archive/uji-works
