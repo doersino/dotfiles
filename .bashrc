@@ -14,13 +14,12 @@ command -v xcrun >/dev/null 2>&1 && export SDKROOT=$(xcrun --show-sdk-path)
 ## PATH ##
 ##########
 
-PATH_NODE="./node_modules/.bin"
-PATH_RUBY="/opt/homebrew/opt/ruby/bin"  # need to change on ruby updates (i.e. macos updates)
+PATH_RUBY="/opt/homebrew/opt/ruby/bin"
 PATH_PIPX="/Users/noah/.local/bin"
 PATH_PG="/Applications/Postgres.app/Contents/Versions/15/bin"  # need to change on pg updates
 PATH_SMERGE="/Applications/Sublime Merge.app/Contents/SharedSupport/bin/"
 PATH_SUBL="/Applications/Sublime Text.app/Contents/SharedSupport/bin/"
-export PATH="$PATH_NODE:$PATH_PIPX:$PATH_RUBY:$PATH:$PATH_PG:$PATH_SMERGE:$PATH_SUBL"
+export PATH="$PATH_PIPX:$PATH_RUBY:$PATH:$PATH_PG:$PATH_SMERGE:$PATH_SUBL"
 
 
 ######################################
@@ -212,13 +211,14 @@ PROMPT_COMMAND="$PROMPT_COMMAND; history -a"
 alias ls='ls -FG'  # display a trailing slash if entry is directory or star if
                    # entry is executable, also colors
 alias ll='ls -lh'  # list mode and human-readable filesizes
-alias la='ll -A'   # include dotfiles
+alias la='ll -A'   # include dotfiles but not . and ..
 alias l1='\ls -1'  # one entry per line
 
 # tree
-alias tree='tree -CF'
-alias treel='tree -phD --du'
-alias treea='treel -a'
+alias tree='tree -F'  # display a trailing slash if entry is directory or star
+                      # if entry is executable
+alias treel='tree -phD --du'  # kind of like ls -l
+alias treea='treel -a'        # kind of like ls -la
 
 # cd
 alias cd..='cd ..'
@@ -228,9 +228,7 @@ alias cdf='cd "$(osascript -e '\''tell application "Finder" to return POSIX path
 alias cp='cp -iPRv'
 alias mv='mv -iv'
 alias mkdir='mkdir -p'
-alias md='mkdir'
 alias rmdir='rmdir -p'
-alias rd='rmdir'
 alias zip='zip -r'
 alias o='open'
 alias f='open -a Finder .'
@@ -261,15 +259,14 @@ alias bashrc='s ~/.bashrc'
 alias refresh-bashrc='source ~/.bashrc'
 
 # git
-alias g='git'
-alias gs='g status'  # collision with ghostscript executable, hence:
+alias gs='git status'  # collision with ghostscript executable, hence:
 alias ghostscript='/usr/local/bin/gs'
-alias gd='g diff'
-alias ga='g add'
-alias gc='g commit -m'
-alias gp='g push'
-alias gl='g log'
-alias gls='g log --pretty=oneline --abbrev-commit -n 15'  # short log
+alias gd='git diff'
+alias ga='git add'
+alias gc='git commit -m'
+alias gp='git push'
+alias gl='git log'
+alias gls='git log --pretty=oneline --abbrev-commit -n 15'  # short log
 
 # python (also see function further down)
 alias pyacti='source bin/activate'
@@ -357,6 +354,7 @@ alias showhn='hn "show hn"'
 ###############
 
 # macos notifications
+# usage: long_running_task && notify "done" || notify "failed"
 function notify() {
     osascript -e "display notification \"$1\""
 }
