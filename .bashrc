@@ -378,6 +378,11 @@ function newmacsettings() {
     chflags hidden ~/Pictures/"Photo Booth Library"
     chflags hidden ~/Pictures/"Photos Library.photoslibrary"
 
+    # fix hostname being "Mac" even when set differently in system settings
+    # bug introduced in macos sequoia
+    # https://www.reddit.com/r/MacOS/comments/1fimgck/sequoia_is_messing_with_my_computers_hostname/
+    sudo scutil --set HostName "apfel"
+
     # install crontab
     crontab ~/Dropbox/code/crontab/crontab.txt
 }
