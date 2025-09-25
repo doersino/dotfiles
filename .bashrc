@@ -295,6 +295,9 @@ alias yt-dlp-mp3="yt-dlp -x --audio-format mp3 --audio-quality 0"
 # mail (cron job reports)
 alias nukemail='echo '"'"'delete *'"'"' | mail; mail'
 
+# apple
+alias nukesnapshots='tmutil thinlocalsnapshots / 999999999999999 4'  # via https://discussions.apple.com/thread/252247983?sortBy=rank, gets rid of weird/massive com.apple.asr.<NUMBER> snapshots too, also see https://apple.stackexchange.com/questions/309143/how-to-thin-your-local-time-machine-snapshots-on-macos-high-sierra
+
 ######################
 ## PERSONAL ALIASES ##
 ######################

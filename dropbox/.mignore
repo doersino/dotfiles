@@ -18,6 +18,7 @@ libffi_convenience.la
 **/bin/python3.18
 
 # other python venv stuff
+**/venv
 **/lib/python
 **/lib/python3
 **/lib/python3.9
@@ -48,6 +49,10 @@ libffi_convenience.la
 
 # davebull stuff
 **/davebull/tdh-tcd
+
+# rammertblick stuff
+**/rammertblick/_site
+**/rammertblick/cache
 
 # backup stuff
 **/backup/osxphotos
