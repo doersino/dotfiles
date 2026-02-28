@@ -18,7 +18,6 @@ libffi_convenience.la
 **/bin/python3.18
 
 # other python venv stuff
-**/venv
 **/lib/python
 **/lib/python3
 **/lib/python3.9
@@ -31,6 +30,8 @@ libffi_convenience.la
 **/lib/python3.16
 **/lib/python3.17
 **/lib/python3.18
+**/venv
+**/__pycache__
 
 # ruby bundler stuff
 **/vendor/bundle
