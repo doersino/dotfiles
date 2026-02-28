@@ -800,8 +800,14 @@ function prefixgpxindropboxwithdateandfileaway() {
         #   (the first is, in my case, the export timestamp)
         DATE=$(perl -wln -e 'print if /\btime\b/' "$FILE" | cut -d'>' -f2 | cut -dT -f1 | head -n 2 | tail -n 1)
         NEWFILE="${DATE}_$FILE"
-        echo "mv $FILE walks/$NEWFILE"
-        \mv "$FILE" "walks/$NEWFILE"
+
+        # file into bikes or walks
+        TARGET="walks"
+        if [[ $FILE == Bike* ]]; then
+            TARGET="bikes"
+        fi
+        echo "mv $FILE $TARGET/$NEWFILE"
+        \mv "$FILE" "$TARGET/$NEWFILE"
     done
     shopt -u nullglob
 
